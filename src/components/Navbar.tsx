@@ -41,12 +41,12 @@ const Navbar: React.FC = () => {
     <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-3">
       <div className="max-w-7xl mx-auto flex items-center justify-between glass-card px-6 py-3 rounded-2xl">
         <Link to="/" className="flex items-center space-x-3 group">
-          <div className="bg-indigo-600 w-12 h-12 rounded-xl flex items-center justify-center group-hover:rotate-[10deg] transition-all duration-500 shadow-lg shadow-indigo-500/20">
-            <span className="text-white text-2xl font-black">19</span>
-          </div>
-          <span className="text-2xl font-black tracking-tight text-gradient">
+          <span className="text-2xl font-black tracking-tight text-gradient order-1">
             Kelompok 19
           </span>
+          <div className="bg-indigo-600 w-12 h-12 rounded-xl flex items-center justify-center group-hover:rotate-[10deg] transition-all duration-500 shadow-lg shadow-indigo-500/20 order-2">
+            <span className="text-white text-2xl font-black">19</span>
+          </div>
         </Link>
 
         {/* Desktop Nav */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { materials } from '../data/dummy';
+import { materials } from '../data/data';
 import MaterialCard from '../components/MaterialCard';
 import { motion } from 'framer-motion';
 import { BookOpen } from 'lucide-react';

@@ -1,5 +1,5 @@
 import React from 'react';
-import { members } from '../data/dummy';
+import { members } from '../data/data';
 import MemberCard from '../components/MemberCard';
 import { motion } from 'framer-motion';
 

@@ -105,16 +105,13 @@ const Home: React.FC = () => {
           </div>
         </div>
       </section>
-    </div>
-  );
-};
 
       {/* Why Join Us */}
       <section className="py-20 px-6 bg-slate-50 dark:bg-slate-900/50">
         <div className="max-w-7xl mx-auto">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-extrabold mb-4">Mengapa Kaderisasi?</h2>
-            <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">Kami tidak hanya belajar teori, tapi kami mempraktekkan nilai-nilai kepemimpinan secara langsung.</p>
+            <h2 className="text-4xl font-extrabold mb-4 tracking-tight">Mengapa Kaderisasi?</h2>
+            <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto font-medium text-lg">Kami tidak hanya belajar teori, tapi kami mempraktekkan nilai-nilai kepemimpinan secara langsung.</p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[
@@ -127,8 +124,8 @@ const Home: React.FC = () => {
                   {item.icon}
                 </div>
                 <div>
-                  <h4 className="text-xl font-bold mb-2">{item.title}</h4>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">{item.desc}</p>
+                  <h4 className="text-xl font-bold mb-2 tracking-tight">{item.title}</h4>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium">{item.desc}</p>
                 </div>
               </div>
             ))}

@@ -2,41 +2,80 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
-  line-height: 1.5;
-  font-weight: 400;
-
-  color-scheme: light dark;
-  color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
-
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-}
-
-body {
-  margin: 0;
-  min-width: 320px;
-  min-height: 100vh;
-}
-
 @layer base {
+  :root {
+    font-family: 'Inter', system-ui, sans-serif;
+    --primary-accent: #6366f1;
+    --secondary-accent: #a855f7;
+  }
+
   body {
-    @apply bg-slate-50 text-slate-900 dark:bg-slate-950 dark:text-slate-50 transition-colors duration-300;
+    @apply antialiased overflow-x-hidden;
+  }
+
+  body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at 0% 0%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 100% 0%, rgba(168, 85, 247, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 100% 100%, rgba(99, 102, 241, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 0% 100%, rgba(168, 85, 247, 0.05) 0%, transparent 50%);
+    z-index: -1;
+    @apply dark:bg-slate-950 bg-slate-50;
   }
 }
 
-.glass-card {
-  @apply bg-white/70 dark:bg-slate-900/70 backdrop-blur-md border border-white/20 dark:border-slate-800/20 shadow-xl;
+@layer components {
+  .glass-card {
+    @apply bg-white/40 dark:bg-slate-900/40 backdrop-blur-xl border border-white/20 dark:border-slate-800/20 shadow-[0_8px_32px_0_rgba(31,38,135,0.07)] dark:shadow-none transition-all duration-300;
+  }
+
+  .glass-card-hover {
+    @apply hover:bg-white/60 dark:hover:bg-slate-900/60 hover:shadow-[0_8px_32px_0_rgba(31,38,135,0.15)] hover:-translate-y-1;
+  }
+
+  .text-gradient {
+    @apply bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-500 bg-clip-text text-transparent dark:from-indigo-400 dark:via-purple-400 dark:to-pink-300;
+  }
+
+  .nav-link {
+    @apply relative px-4 py-2 text-slate-600 dark:text-slate-400 font-medium transition-all duration-300 hover:text-indigo-600 dark:hover:text-indigo-400;
+  }
+
+  .nav-link::after {
+    content: '';
+    @apply absolute bottom-0 left-4 right-4 h-0.5 bg-indigo-500 scale-x-0 transition-transform duration-300 origin-center;
+  }
+
+  .nav-link.active {
+    @apply text-indigo-600 dark:text-indigo-400;
+  }
+
+  .nav-link.active::after {
+    @apply scale-x-100;
+  }
+
+  .btn-primary {
+    @apply px-8 py-4 bg-indigo-600 text-white rounded-2xl font-bold hover:bg-indigo-700 transition-all shadow-lg shadow-indigo-500/25 active:scale-95;
+  }
+
+  .btn-secondary {
+    @apply px-8 py-4 bg-white/50 dark:bg-slate-900/50 backdrop-blur-md text-slate-800 dark:text-slate-100 rounded-2xl font-bold border border-white/20 dark:border-slate-800/20 hover:bg-white/80 dark:hover:bg-slate-800/80 transition-all active:scale-95;
+  }
 }
 
-.nav-link {
-  @apply px-4 py-2 rounded-lg transition-all duration-200 hover:bg-primary-100 dark:hover:bg-primary-900/30 hover:text-primary-600 dark:hover:text-primary-400;
+/* Smooth background movement */
+@keyframes mesh-gradient {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
 }
 
-.nav-link.active {
-  @apply bg-primary-500 text-white hover:bg-primary-600 hover:text-white;
+.mesh-bg {
+  background-size: 200% 200%;
+  animation: mesh-gradient 15s ease infinite;
 }

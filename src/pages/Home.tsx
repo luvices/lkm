@@ -7,93 +7,107 @@ const Home: React.FC = () => {
   return (
     <div className="pb-20">
       {/* Hero Section */}
-      <section className="relative overflow-hidden pt-10 pb-20 px-6">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[600px] bg-primary-500/10 blur-[120px] rounded-full -z-10" />
+      <section className="relative pt-16 pb-24 px-6 overflow-hidden">
+        {/* Animated Background Blobs */}
+        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-500/10 blur-[120px] rounded-full mix-blend-multiply filter animate-pulse" />
+        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/10 blur-[100px] rounded-full mix-blend-multiply filter animate-pulse delay-700" />
         
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6 }}
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
           >
-            <span className="inline-block px-4 py-1 rounded-full bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 font-bold text-sm mb-6">
-              Official Profile v1.0
-            </span>
-            <h1 className="text-5xl lg:text-7xl font-extrabold leading-tight mb-8">
-              Membangun <span className="bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">Karakter</span> Pemimpin Masa Depan
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              className="inline-flex items-center space-x-2 px-4 py-2 rounded-full bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-bold text-xs uppercase tracking-widest mb-8 border border-indigo-100 dark:border-indigo-800"
+            >
+              <Zap size={14} className="animate-pulse" />
+              <span>Official Profile 2024</span>
+            </motion.div>
+            
+            <h1 className="text-6xl lg:text-8xl font-black leading-[1.1] mb-10 tracking-tight text-slate-900 dark:text-white">
+              Eksplorasi <br />
+              <span className="text-gradient">Potensi Diri.</span>
             </h1>
-            <p className="text-lg text-slate-600 dark:text-slate-400 mb-10 leading-relaxed max-w-xl">
-              Platform Profile Kelompok Kaderisasi (LKM) hadir untuk mendokumentasikan perjalanan, pencapaian, dan kolaborasi kami dalam mencetak kader berkualitas.
+            
+            <p className="text-xl text-slate-600 dark:text-slate-400 mb-12 leading-relaxed max-w-xl font-medium">
+              Dokumentasi perjalanan intelektual dan karakter Kelompok Kaderisasi (LKM) dalam mencetak pemimpin masa depan yang berintegritas.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Link to="/anggota" className="px-8 py-4 bg-primary-500 text-white rounded-2xl font-bold hover:bg-primary-600 transition-all flex items-center space-x-2 shadow-lg shadow-primary-500/25">
-                <span>Lihat Anggota</span>
-                <ArrowRight size={20} />
+            
+            <div className="flex flex-wrap gap-5">
+              <Link to="/anggota" className="btn-primary flex items-center space-x-3 group">
+                <span>Mulai Eksplorasi</span>
+                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/materi" className="px-8 py-4 bg-white dark:bg-slate-900 text-slate-800 dark:text-slate-100 rounded-2xl font-bold border border-slate-200 dark:border-slate-800 hover:bg-slate-50 dark:hover:bg-slate-800 transition-all">
-                Pelajari Materi
+              <Link to="/materi" className="btn-secondary">
+                Pelajari Kurikulum
               </Link>
             </div>
           </motion.div>
 
           <motion.div
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 1, ease: "easeOut" }}
             className="relative"
           >
-            <div className="relative z-10 glass-card p-4 rounded-[40px] rotate-3 hover:rotate-0 transition-transform duration-500">
+            <div className="relative z-10 p-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-[3rem] shadow-2xl">
               <img
-                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=800&q=80"
+                src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1000&q=80"
                 alt="Kaderisasi Team"
-                className="rounded-[32px] shadow-2xl"
+                className="rounded-[2.5rem] object-cover aspect-[4/3] grayscale-[20%] hover:grayscale-0 transition-all duration-700"
               />
             </div>
-            <div className="absolute -bottom-10 -right-10 w-64 h-64 bg-primary-400/20 blur-[80px] rounded-full -z-10" />
-            <div className="absolute -top-10 -left-10 w-48 h-48 bg-blue-400/20 blur-[60px] rounded-full -z-10" />
+            {/* Floating Card */}
+            <motion.div 
+              animate={{ y: [0, -20, 0] }}
+              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+              className="absolute -bottom-8 -left-8 z-20 glass-card p-6 rounded-3xl flex items-center space-x-4 max-w-xs"
+            >
+              <div className="w-12 h-12 rounded-2xl bg-indigo-500 flex items-center justify-center text-white shadow-lg">
+                <Users size={24} />
+              </div>
+              <div>
+                <p className="text-xs text-slate-500 dark:text-slate-400 font-bold uppercase tracking-wider">Total Kader</p>
+                <p className="text-xl font-black">10 Anggota Aktif</p>
+              </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
 
-      {/* Stats/Features Section */}
-      <section className="py-20 px-6">
+      {/* Stats Section */}
+      <section className="py-32 px-6">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <motion.div
-              whileHover={{ y: -5 }}
-              className="glass-card p-10 rounded-[32px] text-center"
-            >
-              <div className="w-16 h-16 bg-primary-100 dark:bg-primary-900/40 rounded-2xl flex items-center justify-center text-primary-600 dark:text-primary-400 mx-auto mb-6">
-                <Users size={32} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">10 Anggota Aktif</h3>
-              <p className="text-slate-600 dark:text-slate-400">Tim yang solid dan berdedikasi tinggi dalam setiap agenda kaderisasi.</p>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -5 }}
-              className="glass-card p-10 rounded-[32px] text-center"
-            >
-              <div className="w-16 h-16 bg-blue-100 dark:bg-blue-900/40 rounded-2xl flex items-center justify-center text-blue-600 dark:text-blue-400 mx-auto mb-6">
-                <BookOpen size={32} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">8+ Materi Inti</h3>
-              <p className="text-slate-600 dark:text-slate-400">Kurikulum yang terstruktur untuk mengasah kemampuan kepemimpinan.</p>
-            </motion.div>
-
-            <motion.div
-              whileHover={{ y: -5 }}
-              className="glass-card p-10 rounded-[32px] text-center"
-            >
-              <div className="w-16 h-16 bg-green-100 dark:bg-green-900/40 rounded-2xl flex items-center justify-center text-green-600 dark:text-green-400 mx-auto mb-6">
-                <UserCheck size={32} />
-              </div>
-              <h3 className="text-2xl font-bold mb-4">2 Pembimbing</h3>
-              <p className="text-slate-600 dark:text-slate-400">Didampingi oleh mentor ahli yang berpengalaman di bidangnya.</p>
-            </motion.div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+            {[
+              { icon: <Users size={32} />, title: "Tim Solid", desc: "Kolaborasi intensif antar kader.", color: "indigo" },
+              { icon: <BookOpen size={32} />, title: "Kurikulum Terpadu", desc: "Materi disusun secara sistematis.", color: "purple" },
+              { icon: <UserCheck size={32} />, title: "Mentoring Ahli", desc: "Dibimbing oleh praktisi berpengalaman.", color: "pink" }
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.2 }}
+                className="glass-card glass-card-hover p-12 rounded-[2.5rem] text-center"
+              >
+                <div className={`w-20 h-20 rounded-3xl bg-${stat.color}-100 dark:bg-${stat.color}-900/30 flex items-center justify-center text-${stat.color}-600 dark:text-${stat.color}-400 mx-auto mb-8 shadow-sm`}>
+                  {stat.icon}
+                </div>
+                <h3 className="text-2xl font-black mb-4 tracking-tight">{stat.title}</h3>
+                <p className="text-slate-600 dark:text-slate-400 font-medium">{stat.desc}</p>
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>
+    </div>
+  );
+};
 
       {/* Why Join Us */}
       <section className="py-20 px-6 bg-slate-50 dark:bg-slate-900/50">

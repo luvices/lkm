@@ -40,17 +40,17 @@ const Navbar: React.FC = () => {
   return (
     <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-3">
       <div className="max-w-7xl mx-auto flex items-center justify-between glass-card px-6 py-3 rounded-2xl">
-        <Link to="/" className="flex items-center space-x-2 group">
-          <div className="bg-primary-500 p-2 rounded-lg group-hover:rotate-12 transition-transform duration-300">
+        <Link to="/" className="flex items-center space-x-3 group">
+          <div className="bg-indigo-600 p-2.5 rounded-xl group-hover:rotate-[10deg] transition-all duration-500 shadow-lg shadow-indigo-500/20">
             <UserCheck className="text-white" size={24} />
           </div>
-          <span className="text-xl font-bold bg-gradient-to-r from-primary-600 to-primary-400 bg-clip-text text-transparent">
+          <span className="text-2xl font-black tracking-tight text-gradient">
             LKM Profile
           </span>
         </Link>
 
         {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-2">
+        <div className="hidden md:flex items-center space-x-1">
           {navItems.map((item) => (
             <Link
               key={item.path}
@@ -59,13 +59,14 @@ const Navbar: React.FC = () => {
                 location.pathname === item.path ? 'active' : ''
               }`}
             >
-              {item.icon}
+              <span className="opacity-70 group-hover:opacity-100">{item.icon}</span>
               <span>{item.name}</span>
             </Link>
           ))}
+          <div className="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-4" />
           <button
             onClick={toggleTheme}
-            className="p-2 ml-4 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:scale-110 transition-all"
+            className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:scale-110 transition-all active:scale-95"
           >
             {isDark ? <Sun size={20} /> : <Moon size={20} />}
           </button>

@@ -2,20 +2,12 @@ import React from 'react';
 import { materials } from '../data/data';
 import MaterialCard from '../components/MaterialCard';
 import { motion } from 'framer-motion';
-import { BookOpen } from 'lucide-react';
 
 const Materi: React.FC = () => {
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
         <div>
-          <motion.div
-            initial={{ opacity: 0, scale: 0.5 }}
-            animate={{ opacity: 1, scale: 1 }}
-            className="w-12 h-12 bg-primary-100 dark:bg-primary-900/40 text-primary-600 dark:text-primary-400 rounded-2xl flex items-center justify-center mb-4"
-          >
-            <BookOpen size={24} />
-          </motion.div>
           <motion.h1
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}

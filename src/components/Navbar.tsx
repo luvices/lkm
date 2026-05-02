@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Sun, Moon, Users, BookOpen, UserCheck, Home } from 'lucide-react';
+import { Menu, X, Sun, Moon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const Navbar: React.FC = () => {
@@ -31,10 +31,10 @@ const Navbar: React.FC = () => {
   };
 
   const navItems = [
-    { name: 'Home', path: '/', icon: <Home size={18} /> },
-    { name: 'Anggota', path: '/anggota', icon: <Users size={18} /> },
-    { name: 'Materi', path: '/materi', icon: <BookOpen size={18} /> },
-    { name: 'Pembimbing', path: '/pembimbing', icon: <UserCheck size={18} /> },
+    { name: 'Home', path: '/' },
+    { name: 'Anggota', path: '/anggota' },
+    { name: 'Materi', path: '/materi' },
+    { name: 'Mentor', path: '/pembimbing' },
   ];
 
   return (
@@ -42,7 +42,7 @@ const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto flex items-center justify-between glass-card px-6 py-3 rounded-2xl">
         <Link to="/" className="flex items-center space-x-3 group">
           <span className="text-2xl font-black tracking-tight text-gradient order-1">
-            Kelompok 19
+            Kelompok
           </span>
           <div className="bg-indigo-600 w-12 h-12 rounded-xl flex items-center justify-center group-hover:rotate-[10deg] transition-all duration-500 shadow-lg shadow-indigo-500/20 order-2">
             <span className="text-white text-2xl font-black">19</span>
@@ -55,12 +55,12 @@ const Navbar: React.FC = () => {
             <Link
               key={item.path}
               to={item.path}
-              className={`nav-link flex items-center space-x-2 ${
-                location.pathname === item.path ? 'active' : ''
-              }`}
+              className={`px-5 py-2 rounded-xl text-sm font-bold transition-all duration-300 active:scale-95 ${location.pathname === item.path
+                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/20'
+                  : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                }`}
             >
-              <span className="opacity-70 group-hover:opacity-100">{item.icon}</span>
-              <span>{item.name}</span>
+              {item.name}
             </Link>
           ))}
           <div className="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-4" />
@@ -103,11 +103,11 @@ const Navbar: React.FC = () => {
                 key={item.path}
                 to={item.path}
                 onClick={() => setIsOpen(false)}
-                className={`nav-link flex items-center space-x-3 py-3 ${
-                  location.pathname === item.path ? 'active' : ''
-                }`}
+                className={`px-5 py-3 rounded-xl font-bold transition-all ${location.pathname === item.path
+                    ? 'bg-indigo-600 text-white shadow-lg'
+                    : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                  }`}
               >
-                {item.icon}
                 <span className="font-medium">{item.name}</span>
               </Link>
             ))}

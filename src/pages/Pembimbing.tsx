@@ -1,7 +1,7 @@
 import React from 'react';
 import { mentors } from '../data/data';
 import { motion } from 'framer-motion';
-import { Quote, Globe, Mail } from 'lucide-react';
+import { Quote, Globe } from 'lucide-react';
 
 const Pembimbing: React.FC = () => {
   return (
@@ -12,16 +12,8 @@ const Pembimbing: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           className="text-4xl md:text-5xl font-extrabold mb-4"
         >
-          Mentor & <span className="text-primary-500">Pembimbing</span>
+          Profil Mentor<span className="text-primary-500"></span>
         </motion.h1>
-        <motion.p
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.1 }}
-          className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
-        >
-          Para ahli yang mendampingi dan memberikan arahan strategis dalam pengembangan setiap anggota.
-        </motion.p>
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -57,11 +49,7 @@ const Pembimbing: React.FC = () => {
               <div className="flex space-x-4">
                 <button className="flex items-center space-x-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-primary-500 hover:text-white transition-all font-medium text-sm">
                   <Globe size={16} />
-                  <span>Website</span>
-                </button>
-                <button className="flex items-center space-x-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl hover:bg-primary-500 hover:text-white transition-all font-medium text-sm">
-                  <Mail size={16} />
-                  <span>Kontak</span>
+                  <span>Linkedin </span>
                 </button>
               </div>
             </div>
@@ -76,9 +64,9 @@ const Pembimbing: React.FC = () => {
         viewport={{ once: true }}
         className="mt-20 bg-gradient-to-br from-primary-600 to-primary-400 rounded-[40px] p-12 text-center text-white"
       >
-        <h2 className="text-3xl font-bold mb-6">Mencetak Pemimpin Berintegritas</h2>
+        <h2 className="text-3xl font-bold mb-6">Kata kata masseh</h2>
         <p className="text-primary-50 max-w-3xl mx-auto text-lg leading-relaxed mb-10">
-          "Pendampingan bukan hanya soal transfer ilmu, tapi soal transfer nilai dan semangat. Kami berkomitmen untuk mendampingi setiap langkah perkembangan para kader."
+          "lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod. Quisquam, quod."
         </p>
         <div className="flex justify-center space-x-2">
           <div className="w-2 h-2 bg-white rounded-full"></div>

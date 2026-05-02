@@ -1,58 +1,187 @@
-import React from 'react';
-import { motion } from 'framer-motion';
-import { ArrowRight, Zap } from 'lucide-react';
+import React, { useRef, useState, useMemo, useEffect } from 'react';
+import { motion, useMotionValue, useSpring } from 'framer-motion';
+import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import fotoGrp from '../assets/foto_grp.jpeg';
 
-const Home: React.FC = () => {
-  return (
-    <div className="pb-20">
-      {/* Hero Section */}
-      <section className="relative pt-16 pb-24 px-6 overflow-hidden">
-        {/* Animated Background Blobs */}
-        <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-indigo-500/10 dark:bg-indigo-500/20 blur-[120px] rounded-full filter animate-pulse" />
-        <div className="absolute top-1/4 right-1/4 w-[400px] h-[400px] bg-purple-500/10 dark:bg-purple-500/20 blur-[100px] rounded-full filter animate-pulse delay-700" />
+// Shared state for photo position - global for performance
+const photoState = {
+  cx: 0,
+  cy: 0,
+  r: 0
+};
 
-        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-          >
-            <h1 className="text-6xl lg:text-8xl font-black leading-[1.1] mb-10 tracking-tight text-slate-900 dark:text-white">
-              Eksplorasi <br />
-              <span className="text-gradient">Potensi Diri.</span>
+const Letter = React.memo(({ char, isGradient }: { char: string, isGradient?: boolean }) => {
+  const ref = useRef<HTMLSpanElement>(null);
+  const x = useMotionValue(0);
+  const y = useMotionValue(0);
+  const rotate = useMotionValue(0);
+  const springX = useSpring(x, { stiffness: 60, damping: 20 });
+  const springY = useSpring(y, { stiffness: 60, damping: 20 });
+  const springRotate = useSpring(rotate, { stiffness: 60, damping: 20 });
+
+  useEffect(() => {
+    let raf: number;
+    const update = () => {
+      if (ref.current && photoState.r > 0) {
+        const rect = ref.current.getBoundingClientRect();
+        const lx = rect.left + rect.width / 2;
+        const ly = rect.top + rect.height / 2;
+        const dx = lx - photoState.cx;
+        const dy = ly - photoState.cy;
+        const dist = Math.sqrt(dx * dx + dy * dy);
+        
+        if (dist < photoState.r) {
+          const force = (photoState.r - dist) / photoState.r;
+          x.set(x.get() + dx * force * 6);
+          y.set(y.get() + dy * force * 6);
+          rotate.set(rotate.get() + (Math.random() - 0.5) * 40);
+        }
+      }
+      raf = requestAnimationFrame(update);
+    };
+    raf = requestAnimationFrame(update);
+    return () => cancelAnimationFrame(raf);
+  }, []);
+
+  return (
+    <motion.span
+      ref={ref}
+      style={{ x: springX, y: springY, rotate: springRotate }}
+      className={`inline-block whitespace-pre select-none pointer-events-none px-[0.02em] ${isGradient ? 'text-gradient' : ''}`}
+    >
+      {char}
+    </motion.span>
+  );
+});
+
+const Word = React.memo(({ word, isGradient }: { word: string, isGradient?: boolean }) => {
+  return (
+    <span className="inline-block whitespace-nowrap mr-[0.3em] pointer-events-none">
+      {word.split("").map((char, i) => (
+        <Letter key={i} char={char} isGradient={isGradient} />
+      ))}
+    </span>
+  );
+});
+
+const MovingBlob = ({ color, duration }: { color: string, duration: number }) => (
+  <motion.div
+    animate={{ 
+      x: [0, 400, -200, 0],
+      y: [0, -300, 400, 0],
+      scale: [1, 1.5, 0.8, 1],
+    }}
+    transition={{ 
+      duration, 
+      repeat: Infinity, 
+      ease: "linear" 
+    }}
+    className={`absolute w-[600px] h-[600px] rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen opacity-30 dark:opacity-20 ${color}`}
+  />
+);
+
+const Home: React.FC = () => {
+  const constraintsRef = useRef(null);
+  const photoRef = useRef<HTMLDivElement>(null);
+  
+  const lines = [
+    { text: "Latihan Kepemimpinan", gradient: false },
+    { text: "Mahasiswa", gradient: false },
+    { text: "Informatika 2026", gradient: true }
+  ];
+
+  useEffect(() => {
+    const sync = () => {
+      if (photoRef.current) {
+        const rect = photoRef.current.getBoundingClientRect();
+        photoState.cx = rect.left + rect.width / 2;
+        photoState.cy = rect.top + rect.height / 2;
+        photoState.r = rect.width / 2 + 10;
+      }
+    };
+    const interval = setInterval(sync, 16);
+    return () => clearInterval(interval);
+  }, []);
+
+  return (
+    <div className="pb-20 min-h-screen overflow-hidden relative" ref={constraintsRef}>
+      {/* Dynamic Background */}
+      <div className="absolute inset-0 z-0 pointer-events-none">
+        <MovingBlob color="bg-indigo-300 dark:bg-indigo-900" duration={20} />
+        <div className="absolute top-1/2 left-1/4">
+          <MovingBlob color="bg-purple-300 dark:bg-purple-900" duration={25} />
+        </div>
+        <div className="absolute bottom-1/4 right-1/3">
+          <MovingBlob color="bg-pink-300 dark:bg-pink-900" duration={18} />
+        </div>
+      </div>
+
+      <section className="relative pt-12 pb-24 px-6 z-10">
+        <div className="max-w-[1500px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+          <div className="relative z-10 pointer-events-none select-none">
+            <h1 className="text-6xl md:text-7xl lg:text-[100px] font-black leading-[0.95] mb-12 tracking-tighter text-slate-900 dark:text-white flex flex-col uppercase">
+              {lines.map((line, idx) => (
+                <div key={idx} className="flex flex-wrap">
+                  {line.text.split(" ").map((word, i) => (
+                    <Word key={i} word={word} isGradient={line.gradient} />
+                  ))}
+                </div>
+              ))}
             </h1>
 
-            <p className="text-xl text-slate-600 dark:text-slate-400 mb-12 leading-relaxed max-w-xl font-medium">
-              Dokumentasi perjalanan intelektual dan karakter Kelompok Kaderisasi (LKM) dalam mencetak pemimpin masa depan yang berintegritas.
-            </p>
-
-            <div className="flex flex-wrap gap-5">
-              <Link to="/anggota" className="btn-primary flex items-center space-x-3 group">
-                <span>Mulai Eksplorasi</span>
-                <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            <motion.div 
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+              className="flex flex-wrap gap-6 pointer-events-auto"
+            >
+              <Link to="/anggota" className="btn-primary text-lg px-10 py-5 rounded-[2rem] flex items-center space-x-3 group">
+                <span>Kenali Kami</span>
+                <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/materi" className="btn-secondary">
-                Pelajari Kurikulum
+              <Link to="/materi" className="btn-secondary text-lg px-10 py-5 rounded-[2rem]">
+                Materi LKM
               </Link>
-            </div>
-          </motion.div>
+            </motion.div>
+          </div>
 
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 1, ease: "easeOut" }}
-            className="relative"
-          >
-            <div className="relative z-10 p-2 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-[3rem] shadow-2xl">
-              <img
-                src={fotoGrp}
-                alt="Kaderisasi Team"
-                className="rounded-[2.5rem] object-cover aspect-[4/3] grayscale-[20%] hover:grayscale-0 transition-all duration-700"
-              />
-            </div>
-          </motion.div>
+          <div className="relative flex justify-center lg:justify-end lg:translate-x-20">
+            <motion.div
+              ref={photoRef}
+              drag
+              dragConstraints={constraintsRef}
+              dragElastic={0}
+              dragMomentum={false}
+              whileDrag={{ scale: 1.02, zIndex: 100 }}
+              className="relative z-50 cursor-grab active:cursor-grabbing w-full max-w-2xl"
+              style={{ touchAction: 'none' }}
+            >
+              <div className="p-3 bg-gradient-to-br from-indigo-500/30 to-purple-600/30 backdrop-blur-xl rounded-[4rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden border-2 border-white/30">
+                <img
+                  src={fotoGrp}
+                  alt="Kaderisasi Team"
+                  draggable={false}
+                  className="rounded-[3.2rem] w-full object-cover aspect-[4/3] shadow-2xl pointer-events-none"
+                />
+              </div>
+              <motion.div 
+                animate={{ 
+                  scale: [1, 1.1, 1],
+                  rotate: [-5, 5, -5],
+                  boxShadow: [
+                    "0 10px 20px -5px rgba(250, 204, 21, 0.5)",
+                    "0 0 30px 10px rgba(250, 204, 21, 0.7)",
+                    "0 10px 20px -5px rgba(250, 204, 21, 0.5)"
+                  ]
+                }}
+                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
+                className="absolute -top-6 -left-6 bg-yellow-400 dark:bg-yellow-500 px-6 py-3 rounded-2xl border-2 border-white dark:border-slate-900 pointer-events-none z-[110]"
+              >
+                <p className="text-xs font-black uppercase tracking-widest text-slate-900 drop-shadow-sm">Drag Me!</p>
+              </motion.div>
+            </motion.div>
+          </div>
         </div>
       </section>
     </div>

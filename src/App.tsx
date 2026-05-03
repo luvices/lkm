@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Anggota from './pages/Anggota';
 import Materi from './pages/Materi';
+import MateriDetail from './pages/MateriDetail';
 import Pembimbing from './pages/Pembimbing';
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path="anggota" element={<Anggota />} />
           <Route path="materi" element={<Materi />} />
+          <Route path="materi/:id" element={<MateriDetail />} />
           <Route path="pembimbing" element={<Pembimbing />} />
         </Route>
       </Routes>

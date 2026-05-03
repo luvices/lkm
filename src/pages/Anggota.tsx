@@ -16,7 +16,7 @@ const Anggota: React.FC = () => {
         </motion.h1>
       </div>
 
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10">
         {members.map((member) => (
           <MemberCard key={member.id} member={member} />
         ))}

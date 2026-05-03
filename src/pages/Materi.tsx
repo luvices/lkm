@@ -1,9 +1,23 @@
-import React from 'react';
+import React, { useState, useMemo } from 'react';
 import { materials } from '../data/data';
 import MaterialCard from '../components/MaterialCard';
-import { motion } from 'framer-motion';
+import { motion, AnimatePresence } from 'framer-motion';
 
 const Materi: React.FC = () => {
+  const [filter, setFilter] = useState<'all' | 'latest'>('all');
+
+  const displayedMaterials = useMemo(() => {
+    const list = [...materials];
+    if (filter === 'latest') {
+      return list.sort((a, b) => {
+        const dateA = a.date ? new Date(a.date).getTime() : 0;
+        const dateB = b.date ? new Date(b.date).getTime() : 0;
+        return dateB - dateA;
+      });
+    }
+    return list; // 'all' returns original order (or could be sorted by id)
+  }, [filter]);
+
   return (
     <div className="max-w-7xl mx-auto px-6 py-12">
       <div className="flex flex-col md:flex-row md:items-end justify-between mb-12 gap-6">
@@ -25,15 +39,44 @@ const Materi: React.FC = () => {
           </motion.p>
         </div>
         <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
-          <button className="px-6 py-2 bg-white dark:bg-slate-700 shadow-sm rounded-lg font-semibold">Semua</button>
-          <button className="px-6 py-2 text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">Terbaru</button>
+          <button 
+            onClick={() => setFilter('all')}
+            className={`px-6 py-2 rounded-lg font-semibold transition-all ${
+              filter === 'all' 
+                ? 'bg-white dark:bg-slate-700 shadow-sm text-slate-900 dark:text-white' 
+                : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+            }`}
+          >
+            Semua
+          </button>
+          <button 
+            onClick={() => setFilter('latest')}
+            className={`px-6 py-2 rounded-lg font-semibold transition-all ${
+              filter === 'latest' 
+                ? 'bg-white dark:bg-slate-700 shadow-sm text-slate-900 dark:text-white' 
+                : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+            }`}
+          >
+            Terbaru
+          </button>
         </div>
       </div>
 
       <div className="space-y-6">
-        {materials.map((material) => (
-          <MaterialCard key={material.id} material={material} />
-        ))}
+        <AnimatePresence mode="popLayout">
+          {displayedMaterials.map((material) => (
+            <motion.div
+              key={material.id}
+              layout
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              transition={{ duration: 0.2 }}
+            >
+              <MaterialCard material={material} />
+            </motion.div>
+          ))}
+        </AnimatePresence>
       </div>
     </div>
   );

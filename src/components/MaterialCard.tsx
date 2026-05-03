@@ -3,11 +3,14 @@ import type { Material } from '../types';
 import { motion } from 'framer-motion';
 import { Calendar, ChevronRight } from 'lucide-react';
 
+import { useNavigate } from 'react-router-dom';
+
 interface MaterialCardProps {
   material: Material;
 }
 
 const MaterialCard: React.FC<MaterialCardProps> = ({ material }) => {
+  const navigate = useNavigate();
   return (
     <motion.div
       initial={{ opacity: 0, x: -20 }}
@@ -32,7 +35,10 @@ const MaterialCard: React.FC<MaterialCardProps> = ({ material }) => {
         </p>
       </div>
       
-      <button className="flex items-center space-x-2 text-primary-500 font-semibold group/btn">
+      <button 
+        onClick={() => navigate(`/materi/${material.id}`)}
+        className="flex items-center space-x-2 text-primary-500 font-semibold group/btn"
+      >
         <span>Lihat Detail</span>
         <ChevronRight size={18} className="group-hover/btn:translate-x-1 transition-transform" />
       </button>

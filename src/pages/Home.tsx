@@ -77,7 +77,7 @@ const MovingBlob = ({ color, duration }: { color: string, duration: number }) =>
       repeat: Infinity, 
       ease: "linear" 
     }}
-    className={`absolute w-[600px] h-[600px] rounded-full blur-[120px] mix-blend-multiply dark:mix-blend-screen opacity-30 dark:opacity-20 ${color}`}
+    className={`absolute w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full blur-[80px] md:blur-[120px] mix-blend-multiply dark:mix-blend-screen opacity-30 dark:opacity-20 ${color}`}
   />
 );
 
@@ -105,7 +105,7 @@ const Home: React.FC = () => {
   }, []);
 
   return (
-    <div className="pb-20 min-h-screen overflow-hidden relative" ref={constraintsRef}>
+    <div className="pb-20 min-h-screen overflow-x-hidden relative" ref={constraintsRef}>
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
         <MovingBlob color="bg-indigo-300 dark:bg-indigo-900" duration={20} />
@@ -117,10 +117,10 @@ const Home: React.FC = () => {
         </div>
       </div>
 
-      <section className="relative pt-12 pb-24 px-6 z-10">
-        <div className="max-w-[1500px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+      <section className="relative pt-8 pb-16 md:pt-12 md:pb-24 px-4 md:px-6 z-10">
+        <div className="max-w-[1500px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
           <div className="relative z-10 pointer-events-none select-none">
-            <h1 className="text-6xl md:text-7xl lg:text-[100px] font-black leading-[0.95] mb-12 tracking-tighter text-slate-900 dark:text-white flex flex-col uppercase">
+            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[100px] font-black leading-[0.95] mb-8 md:mb-12 tracking-tighter text-slate-900 dark:text-white flex flex-col uppercase">
               {lines.map((line, idx) => (
                 <div key={idx} className="flex flex-wrap">
                   {line.text.split(" ").map((word, i) => (
@@ -136,11 +136,11 @@ const Home: React.FC = () => {
               transition={{ delay: 0.5 }}
               className="flex flex-wrap gap-6 pointer-events-auto"
             >
-              <Link to="/anggota" className="btn-primary text-lg px-10 py-5 rounded-[2rem] flex items-center space-x-3 group">
+              <Link to="/anggota" className="w-full sm:w-auto btn-primary text-base md:text-lg px-8 md:px-10 py-4 md:py-5 rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center space-x-3 group">
                 <span>Kenali Kami</span>
                 <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
               </Link>
-              <Link to="/materi" className="btn-secondary text-lg px-10 py-5 rounded-[2rem]">
+              <Link to="/materi" className="w-full sm:w-auto btn-secondary text-base md:text-lg px-8 md:px-10 py-4 md:py-5 rounded-[1.5rem] md:rounded-[2rem] text-center">
                 Materi LKM
               </Link>
             </motion.div>
@@ -157,12 +157,12 @@ const Home: React.FC = () => {
               className="relative z-50 cursor-grab active:cursor-grabbing w-full max-w-2xl"
               style={{ touchAction: 'none' }}
             >
-              <div className="p-3 bg-gradient-to-br from-indigo-500/30 to-purple-600/30 backdrop-blur-xl rounded-[4rem] shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden border-2 border-white/30">
+              <div className="p-2 md:p-3 bg-gradient-to-br from-indigo-500/30 to-purple-600/30 backdrop-blur-xl rounded-[2rem] md:rounded-[4rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] md:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden border-2 border-white/30">
                 <img
                   src={fotoGrp}
                   alt="Kaderisasi Team"
                   draggable={false}
-                  className="rounded-[3.2rem] w-full object-cover aspect-[4/3] shadow-2xl pointer-events-none"
+                  className="rounded-[1.6rem] md:rounded-[3.2rem] w-full object-cover aspect-[4/3] shadow-2xl pointer-events-none"
                 />
               </div>
               <motion.div 
@@ -176,9 +176,9 @@ const Home: React.FC = () => {
                   ]
                 }}
                 transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-6 -left-6 bg-yellow-400 dark:bg-yellow-500 px-6 py-3 rounded-2xl border-2 border-white dark:border-slate-900 pointer-events-none z-[110]"
+                className="absolute -top-4 -left-4 md:-top-6 md:-left-6 bg-yellow-400 dark:bg-yellow-500 px-4 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl border-2 border-white dark:border-slate-900 pointer-events-none z-[110]"
               >
-                <p className="text-xs font-black uppercase tracking-widest text-slate-900 drop-shadow-sm">Drag Me!</p>
+                <p className="text-[10px] md:text-xs font-black uppercase tracking-widest text-slate-900 drop-shadow-sm">Drag Me!</p>
               </motion.div>
             </motion.div>
           </div>

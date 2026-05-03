@@ -12,6 +12,7 @@ export interface Material {
   title: string;
   description: string;
   date?: string;
+  content?: string;
 }
 
 export interface Mentor {

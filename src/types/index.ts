@@ -3,8 +3,8 @@ export interface Member {
   name: string;
   role: string;
   nim?: string;
-  description: string;
   photo: string;
+  linkedin?: string;
 }
 
 export interface Material {

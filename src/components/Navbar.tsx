@@ -44,7 +44,7 @@ const Navbar: React.FC = () => {
           <span className="text-2xl font-black tracking-tight text-gradient order-1">
             Kelompok
           </span>
-          <div className="bg-indigo-600 w-12 h-12 rounded-xl flex items-center justify-center group-hover:rotate-[10deg] transition-all duration-500 shadow-lg shadow-indigo-500/20 order-2">
+          <div className="bg-blue-700 w-12 h-12 rounded-xl flex items-center justify-center group-hover:rotate-[10deg] transition-all duration-500 shadow-lg shadow-blue-700/20 order-2">
             <span className="text-white text-2xl font-black">19</span>
           </div>
         </Link>

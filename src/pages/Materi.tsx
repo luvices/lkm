@@ -27,7 +27,7 @@ const Materi: React.FC = () => {
             animate={{ opacity: 1, x: 0 }}
             className="text-4xl font-extrabold"
           >
-            Materi <span className="text-primary-500">Kaderisasi</span>
+            Materi <span className="text-primary-500">LKM Informatika 2026</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, x: -20 }}
@@ -39,23 +39,21 @@ const Materi: React.FC = () => {
           </motion.p>
         </div>
         <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
-          <button 
+          <button
             onClick={() => setFilter('all')}
-            className={`px-6 py-2 rounded-lg font-semibold transition-all ${
-              filter === 'all' 
-                ? 'bg-white dark:bg-slate-700 shadow-sm text-slate-900 dark:text-white' 
-                : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
-            }`}
+            className={`px-6 py-2 rounded-lg font-semibold transition-all ${filter === 'all'
+              ? 'bg-white dark:bg-slate-700 shadow-sm text-slate-900 dark:text-white'
+              : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+              }`}
           >
             Semua
           </button>
-          <button 
+          <button
             onClick={() => setFilter('latest')}
-            className={`px-6 py-2 rounded-lg font-semibold transition-all ${
-              filter === 'latest' 
-                ? 'bg-white dark:bg-slate-700 shadow-sm text-slate-900 dark:text-white' 
-                : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
-            }`}
+            className={`px-6 py-2 rounded-lg font-semibold transition-all ${filter === 'latest'
+              ? 'bg-white dark:bg-slate-700 shadow-sm text-slate-900 dark:text-white'
+              : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+              }`}
           >
             Terbaru
           </button>

@@ -1,4 +1,4 @@
-import React, { useRef, useState, useMemo, useEffect } from 'react';
+import React, { useRef, useEffect } from 'react';
 import { motion, useMotionValue, useSpring } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -108,12 +108,12 @@ const Home: React.FC = () => {
     <div className="pb-20 min-h-screen overflow-x-hidden relative" ref={constraintsRef}>
       {/* Dynamic Background */}
       <div className="absolute inset-0 z-0 pointer-events-none">
-        <MovingBlob color="bg-indigo-300 dark:bg-indigo-900" duration={20} />
+        <MovingBlob color="bg-blue-400/20 dark:bg-blue-900/30" duration={20} />
         <div className="absolute top-1/2 left-1/4">
-          <MovingBlob color="bg-purple-300 dark:bg-purple-900" duration={25} />
+          <MovingBlob color="bg-indigo-400/10 dark:bg-indigo-900/20" duration={25} />
         </div>
         <div className="absolute bottom-1/4 right-1/3">
-          <MovingBlob color="bg-pink-300 dark:bg-pink-900" duration={18} />
+          <MovingBlob color="bg-blue-300/10 dark:bg-blue-800/20" duration={18} />
         </div>
       </div>
 
@@ -130,11 +130,12 @@ const Home: React.FC = () => {
               ))}
             </h1>
 
+            {/* Buttons — desktop only (shown in left column) */}
             <motion.div 
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
-              className="flex flex-wrap gap-6 pointer-events-auto"
+              className="hidden lg:flex flex-wrap gap-6 pointer-events-auto"
             >
               <Link to="/anggota" className="w-full sm:w-auto btn-primary text-base md:text-lg px-8 md:px-10 py-4 md:py-5 rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center space-x-3 group">
                 <span>Kenali Kami</span>
@@ -157,7 +158,7 @@ const Home: React.FC = () => {
               className="relative z-50 cursor-grab active:cursor-grabbing w-full max-w-2xl"
               style={{ touchAction: 'none' }}
             >
-              <div className="p-2 md:p-3 bg-gradient-to-br from-indigo-500/30 to-purple-600/30 backdrop-blur-xl rounded-[2rem] md:rounded-[4rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.5)] md:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.5)] overflow-hidden border-2 border-white/30">
+              <div className="p-2 md:p-3 bg-blue-500/10 dark:bg-blue-900/20 backdrop-blur-xl rounded-[2rem] md:rounded-[4rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] md:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)] overflow-hidden border-2 border-white/20 dark:border-slate-800/30">
                 <img
                   src={fotoGrp}
                   alt="Kaderisasi Team"
@@ -182,6 +183,22 @@ const Home: React.FC = () => {
               </motion.div>
             </motion.div>
           </div>
+
+          {/* Buttons — mobile only (shown below photo) */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.6 }}
+            className="flex lg:hidden flex-wrap gap-4 w-full pointer-events-auto"
+          >
+            <Link to="/anggota" className="flex-1 btn-primary text-base px-6 py-4 rounded-[1.5rem] flex items-center justify-center space-x-2 group">
+              <span>Kenali Kami</span>
+              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
+            </Link>
+            <Link to="/materi" className="flex-1 btn-secondary text-base px-6 py-4 rounded-[1.5rem] text-center flex items-center justify-center">
+              Materi LKM
+            </Link>
+          </motion.div>
         </div>
       </section>
     </div>

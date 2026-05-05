@@ -1,8 +1,9 @@
-import fikriImg from '../assets/fikri.png';
-import ranggaImg from '../assets/rangga.png';
-import repatImg from '../assets/repat.jpeg';
 import akromImg from '../assets/akrom.jpeg';
+import fikriImg from '../assets/fikri.png';
 import idhoImg from '../assets/idho.jpeg';
+import ranggaImg from '../assets/rangga.png';
+import renataImg from '../assets/renata.png';
+import repatImg from '../assets/repat.jpeg';
 import type { Material, Member, Mentor } from '../types';
 
 export const members: Member[] = [

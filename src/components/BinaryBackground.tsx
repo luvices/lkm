@@ -80,8 +80,8 @@ const BinaryBackground: React.FC = () => {
 
         if (char.opacity > 0.01) {
           ctx.fillStyle = dark
-            ? `rgba(96, 165, 250, ${char.opacity * 0.8})` // text-blue-400 equivalent
-            : `rgba(37, 99, 235, ${char.opacity * 0.5})`; // text-blue-600 equivalent
+            ? `rgba(29, 78, 216, ${char.opacity * 0.4})`
+            : `rgba(29, 78, 216, ${char.opacity * 0.3})`;
           ctx.fillText(char.char, char.x + fontSize / 2, char.y + fontSize / 2);
         }
       });

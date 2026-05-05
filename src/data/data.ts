@@ -1,6 +1,7 @@
 import fikriImg from '../assets/fikri.png';
 import repatImg from '../assets/repat.jpeg';
 import akromImg from '../assets/akrom.jpeg';
+import idhoImg from '../assets/idho.png';
 import type { Material, Member, Mentor } from '../types';
 
 export const members: Member[] = [
@@ -38,10 +39,10 @@ export const members: Member[] = [
   },
   {
     id: '5',
-    name: 'Muhammad Fikri Biban Putra',
+    name: 'Ridho Fadillah ',
     role: 'Anggota',
-    nim: '257006111165',
-    photo: fikriImg,
+    nim: '257006111114',
+    photo: idhoImg,
     linkedin: '#',
   },
   {

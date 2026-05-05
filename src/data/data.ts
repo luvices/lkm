@@ -44,7 +44,7 @@ export const members: Member[] = [
     role: 'Anggota',
     nim: '257006111114',
     photo: idhoImg,
-    linkedin: '#',
+    linkedin: 'https://www.linkedin.com/in/ridho-fadillah-15b704405?utm_source=share_via&utm_content=profile&utm_medium=member_android',
   },
   {
     id: '6',

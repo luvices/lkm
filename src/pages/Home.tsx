@@ -1,10 +1,9 @@
-import React from 'react';
 import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
+import React from 'react';
 import { Link } from 'react-router-dom';
-import RollingText from '../components/RollingText';
-import ScrollReveal from '../components/ScrollReveal';
 import fotoGrp from '../assets/foto_grp.jpeg';
+import RollingText from '../components/RollingText';
 
 const Home: React.FC = () => {
   return (

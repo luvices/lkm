@@ -1,7 +1,7 @@
+import { motion } from 'framer-motion';
+import { Quote } from 'lucide-react';
 import React from 'react';
 import { mentors } from '../data/data';
-import { motion } from 'framer-motion';
-import { Quote, Globe } from 'lucide-react';
 
 const Pembimbing: React.FC = () => {
   return (

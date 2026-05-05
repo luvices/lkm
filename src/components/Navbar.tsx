@@ -1,34 +1,39 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X, Sun, Moon } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
+import { motion, AnimatePresence, useScroll, useMotionValueEvent } from 'framer-motion';
+import RollingText from './RollingText';
 
 const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isDark, setIsDark] = useState(false);
+  const [visible, setVisible] = useState(true);
+  const [isExpanded, setIsExpanded] = useState(false);
+  const [isHovered, setIsHovered] = useState(false);
   const location = useLocation();
+  const { scrollY } = useScroll();
+  const lastScrollY = useRef(0);
 
   useEffect(() => {
-    if (localStorage.theme === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
-      document.documentElement.classList.add('dark');
-      setIsDark(true);
-    } else {
-      document.documentElement.classList.remove('dark');
-      setIsDark(false);
-    }
+    const expandTimer = setTimeout(() => setIsExpanded(true), 2000);
+    const retractTimer = setTimeout(() => setIsExpanded(false), 7000);
+    
+    return () => {
+      clearTimeout(expandTimer);
+      clearTimeout(retractTimer);
+    };
   }, []);
 
-  const toggleTheme = () => {
-    if (isDark) {
-      document.documentElement.classList.remove('dark');
-      localStorage.theme = 'light';
-      setIsDark(false);
+  useMotionValueEvent(scrollY, "change", (current) => {
+    // Basic show/hide logic based on scroll direction
+    if (current < 10) {
+      setVisible(true);
+    } else if (current > lastScrollY.current) {
+      setVisible(false); // Scrolling down
     } else {
-      document.documentElement.classList.add('dark');
-      localStorage.theme = 'dark';
-      setIsDark(true);
+      setVisible(true); // Scrolling up
     }
-  };
+    lastScrollY.current = current;
+  });
 
   const navItems = [
     { name: 'Home', path: '/' },
@@ -37,84 +42,103 @@ const Navbar: React.FC = () => {
     { name: 'Mentor', path: '/pembimbing' },
   ];
 
+  const showFullLogo = isExpanded || isHovered;
+
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 px-4 py-3">
-      <div className="max-w-7xl mx-auto flex items-center justify-between glass-card px-6 py-3 rounded-2xl">
-        <Link to="/" className="flex items-center space-x-3 group">
-          <span className="text-2xl font-black tracking-tight text-gradient order-1">
-            Kelompok
-          </span>
-          <div className="bg-blue-700 w-12 h-12 rounded-xl flex items-center justify-center group-hover:rotate-[10deg] transition-all duration-500 shadow-lg shadow-blue-700/20 order-2">
-            <span className="text-white text-2xl font-black">19</span>
-          </div>
-        </Link>
-
-        {/* Desktop Nav */}
-        <div className="hidden md:flex items-center space-x-1">
-          {navItems.map((item) => (
-            <Link
-              key={item.path}
-              to={item.path}
-              className={`px-5 py-2 rounded-xl text-sm font-bold transition-all duration-300 active:scale-95 ${location.pathname === item.path
-                  ? 'bg-indigo-600 text-white shadow-lg shadow-indigo-500/20'
-                  : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
-                }`}
+    <AnimatePresence mode="wait">
+      <motion.nav 
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ 
+          y: visible ? 0 : -100,
+          opacity: visible ? 1 : 0
+        }}
+        transition={{ duration: 0.3, ease: "easeInOut" }}
+        className="fixed top-6 inset-x-0 mx-auto z-50 px-4 flex justify-center pointer-events-none"
+      >
+        <div className="glass-card flex items-center justify-between w-full max-w-[800px] px-6 py-3 rounded-full pointer-events-auto shadow-2xl border border-white/10">
+          <Link 
+            to="/" 
+            className="flex items-center group cursor-pointer"
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+          >
+            <motion.div
+              animate={{ 
+                width: showFullLogo ? 'auto' : 0,
+                opacity: showFullLogo ? 1 : 0,
+                marginRight: showFullLogo ? 12 : 0
+              }}
+              transition={{ 
+                duration: 0.6, 
+                ease: [0.16, 1, 0.3, 1] 
+              }}
+              className="overflow-hidden whitespace-nowrap"
             >
-              {item.name}
-            </Link>
-          ))}
-          <div className="w-px h-6 bg-slate-200 dark:bg-slate-800 mx-4" />
-          <button
-            onClick={toggleTheme}
-            className="p-2.5 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:scale-110 transition-all active:scale-95"
-          >
-            {isDark ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-        </div>
+              <span className="text-xl font-black tracking-tight text-slate-100">
+                Kelompok
+              </span>
+            </motion.div>
+            
+            <motion.div 
+              className="bg-blue-600 w-10 h-10 rounded-full flex items-center justify-center group-hover:rotate-[10deg] transition-all duration-500 shrink-0"
+            >
+              <span className="text-white text-xl font-black">19</span>
+            </motion.div>
+          </Link>
 
-        {/* Mobile Toggle */}
-        <div className="md:hidden flex items-center space-x-4">
-          <button
-            onClick={toggleTheme}
-            className="p-2 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-300"
-          >
-            {isDark ? <Sun size={20} /> : <Moon size={20} />}
-          </button>
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="p-2 rounded-lg text-slate-600 dark:text-slate-300"
-          >
-            {isOpen ? <X size={24} /> : <Menu size={24} />}
-          </button>
-        </div>
-      </div>
-
-      {/* Mobile Menu */}
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden mt-2 glass-card rounded-2xl p-4 flex flex-col space-y-2"
-          >
+          {/* Desktop Nav */}
+          <div className="hidden md:flex items-center space-x-1">
             {navItems.map((item) => (
-              <Link
+              <RollingText
                 key={item.path}
                 to={item.path}
-                onClick={() => setIsOpen(false)}
-                className={`px-5 py-3 rounded-xl font-bold transition-all ${location.pathname === item.path
-                    ? 'bg-indigo-600 text-white shadow-lg'
-                    : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
+                text={item.name}
+                className={`px-5 py-2.5 rounded-full text-[13px] uppercase font-black tracking-widest transition-all duration-300 active:scale-95 ${location.pathname === item.path
+                    ? 'bg-blue-600 text-white'
+                    : 'text-slate-400 hover:bg-white/5 hover:text-slate-100'
                   }`}
-              >
-                <span className="font-medium">{item.name}</span>
-              </Link>
+              />
             ))}
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
+          </div>
+
+          {/* Mobile Toggle */}
+          <div className="md:hidden flex items-center">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              className="p-2 rounded-full text-slate-400 hover:text-slate-100"
+            >
+              {isOpen ? <X size={24} /> : <Menu size={24} />}
+            </button>
+          </div>
+        </div>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="absolute top-full mt-4 w-[calc(100%-2rem)] glass-card p-6 rounded-3xl flex flex-col space-y-3 pointer-events-auto border border-white/10"
+            >
+              {navItems.map((item) => (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  onClick={() => setIsOpen(false)}
+                  className={`px-6 py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] transition-all ${location.pathname === item.path
+                      ? 'bg-blue-600 text-white'
+                      : 'text-slate-400 hover:bg-white/5 hover:text-slate-100'
+                    }`}
+                >
+                  {item.name}
+                </Link>
+              ))}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.nav>
+    </AnimatePresence>
   );
 };
 

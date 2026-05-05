@@ -12,42 +12,49 @@ const MemberCard: React.FC<MemberCardProps> = ({ member }) => {
     <motion.div
       initial={{ opacity: 0, y: 30 }}
       whileInView={{ opacity: 1, y: 0 }}
-      whileHover={{ y: -12 }}
+      whileHover={{ y: -5 }}
       viewport={{ once: true }}
-      className="glass-card glass-card-hover rounded-[2.5rem] overflow-hidden group border border-slate-200/50 dark:border-slate-800/50"
+      className="glass-card overflow-hidden group flex flex-col h-full"
     >
-      <div className="relative h-96 overflow-hidden">
+      <div className="relative h-96 overflow-hidden flex-shrink-0">
         <img
           src={member.photo}
           alt={member.name}
+          draggable={false}
           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
         />
       </div>
 
-      <div className="p-10">
-        <div className="mb-4">
-          <h3 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">{member.name}</h3>
+      <div className="p-8 flex flex-col flex-grow">
+        <div className="flex-grow">
+          <div className="h-20 flex items-start"> {/* Increased height for name area */}
+            <h2 className="text-slate-100 tracking-tight uppercase font-black leading-tight">
+              {member.name}
+            </h2>
+          </div>
 
           {member.nim && (
-            <div className="mt-2">
-              <span className="inline-flex items-center space-x-1.5 text-xs font-black bg-blue-50 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 px-4 py-2 rounded-full border border-blue-100 dark:border-blue-800 uppercase tracking-tight">
-                <IdCard size={14} />
+            <div className="mt-6"> {/* Increased margin top */}
+              <span className="inline-flex items-center space-x-1.5 bg-white/5 text-slate-400 px-4 py-2 rounded-[3px] border border-white/10 uppercase text-[10px] font-bold tracking-widest">
+                <IdCard size={12} />
                 <span>{member.nim}</span>
               </span>
             </div>
           )}
+        </div>
 
-          <p className="text-blue-700 dark:text-blue-400 font-bold text-base tracking-wide uppercase mt-4">
+        <div className="mt-auto">
+          <p className="text-blue-500 font-black tracking-[0.2em] uppercase text-[11px] mt-6">
             {member.role}
           </p>
 
-          <div className="flex items-center space-x-3 mt-4">
+          <div className="flex items-center space-x-3 mt-6">
             {member.linkedin && (
               <a
                 href={member.linkedin}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-10 h-10 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-blue-700 hover:text-white transition-all flex items-center justify-center"
+                className="w-10 h-10 bg-white/5 rounded-[3px] text-slate-400 hover:bg-blue-600 hover:text-white transition-all flex items-center justify-center border border-white/5"
                 title="LinkedIn"
               >
                 <svg

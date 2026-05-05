@@ -21,4 +21,5 @@ export interface Mentor {
   role: string;
   description: string;
   photo: string;
+  linkedin?: string;
 }

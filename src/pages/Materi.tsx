@@ -25,34 +25,34 @@ const Materi: React.FC = () => {
           <motion.h1
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
-            className="text-4xl font-extrabold"
+            className="text-impact-lg text-slate-100"
           >
-            Materi <span className="text-primary-500">LKM Informatika 2026</span>
+            Materi <span className="text-blue-500">LKM Informatika</span>
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-slate-600 dark:text-slate-400 mt-2 max-w-xl"
+            className="text-slate-400 mt-3 max-w-xl font-bold uppercase text-[11px] tracking-widest"
           >
             Kumpulan materi Latihan Kepemimpinan Mahasiswa Informatika 2026.
           </motion.p>
         </div>
-        <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
+        <div className="flex bg-white/5 p-1 rounded-xl border border-white/10">
           <button
             onClick={() => setFilter('all')}
-            className={`px-6 py-2 rounded-lg font-semibold transition-all ${filter === 'all'
-              ? 'bg-white dark:bg-slate-700 shadow-sm text-slate-900 dark:text-white'
-              : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+            className={`px-6 py-2 rounded-lg font-black uppercase text-[10px] tracking-widest transition-all ${filter === 'all'
+              ? 'bg-blue-600 text-white'
+              : 'text-slate-400 hover:text-slate-100'
               }`}
           >
             Semua
           </button>
           <button
             onClick={() => setFilter('latest')}
-            className={`px-6 py-2 rounded-lg font-semibold transition-all ${filter === 'latest'
-              ? 'bg-white dark:bg-slate-700 shadow-sm text-slate-900 dark:text-white'
-              : 'text-slate-500 hover:text-slate-700 dark:hover:text-slate-300'
+            className={`px-6 py-2 rounded-lg font-black uppercase text-[10px] tracking-widest transition-all ${filter === 'latest'
+              ? 'bg-blue-600 text-white'
+              : 'text-slate-400 hover:text-slate-100'
               }`}
           >
             Terbaru

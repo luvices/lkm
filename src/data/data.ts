@@ -1,4 +1,5 @@
 import akromImg from '../assets/akrom.jpeg';
+import dafaImg from '../assets/dafa.jpg';
 import fikriImg from '../assets/fikri.png';
 import idhoImg from '../assets/idho.jpeg';
 import ranggaImg from '../assets/rangga.png';
@@ -29,7 +30,7 @@ export const members: Member[] = [
     role: 'Anggota',
     nim: '257006111165',
     photo: fikriImg,
-    linkedin: 'https://www.linkedin.com/in/muhammad-fikri-biban-putra-67b19333b',
+    linkedin: 'https://www.linkedin.com/in/muhammad-fikri-biban-putra',
   },
   {
     id: '4',
@@ -57,11 +58,11 @@ export const members: Member[] = [
   },
   {
     id: '7',
-    name: 'Muhammad Fikri Biban Putra',
+    name: 'Dafa Zahran',
     role: 'Anggota',
-    nim: '257006111165',
-    photo: fikriImg,
-    linkedin: '#',
+    nim: '257006111188',
+    photo: dafaImg,
+    linkedin: 'https://www.linkedin.com/in/dafazahrann/',
   },
   {
     id: '8',
@@ -154,6 +155,7 @@ export const mentors: Mentor[] = [
     role: 'Mentor 1',
     description: 'lorem',
     photo: fikriImg,
+    linkedin: '#',
   },
   {
     id: '2',
@@ -161,5 +163,6 @@ export const mentors: Mentor[] = [
     role: 'Mentor 2',
     description: 'lorem',
     photo: fikriImg,
+    linkedin: '#',
   },
 ];

@@ -1,14 +1,16 @@
 import fikriImg from '../assets/fikri.png';
+import repatImg from '../assets/repat.jpeg';
+import akromImg from '../assets/akrom.jpeg';
 import type { Material, Member, Mentor } from '../types';
 
 export const members: Member[] = [
   {
     id: '1',
-    name: 'Muhammad Fikri Biban Putra',
+    name: 'Repat Dwi Gunanda',
     role: 'Ketua',
-    nim: '257006111165',
-    photo: fikriImg,
-    linkedin: '#',
+    nim: '257006111069',
+    photo: repatImg,
+    linkedin: 'https://www.linkedin.com/in/repat-dwi-1915ab31b?utm_source=share_via&utm_content=profile&utm_medium=member_android',
   },
   {
     id: '2',
@@ -24,15 +26,15 @@ export const members: Member[] = [
     role: 'Anggota',
     nim: '257006111165',
     photo: fikriImg,
-    linkedin: '#',
+    linkedin: 'https://www.linkedin.com/in/muhammad-fikri-biban-putra-67b19333b',
   },
   {
     id: '4',
-    name: 'Muhammad Fikri Biban Putra',
+    name: 'Muhammad Faishal Akrom ',
     role: 'Anggota',
-    nim: '257006111165',
-    photo: fikriImg,
-    linkedin: '#',
+    nim: '257006111079',
+    photo: akromImg,
+    linkedin: 'https://www.linkedin.com/in/faishal-akrom-009452361?utm_source=share_via&utm_content=profile&utm_medium=member_android',
   },
   {
     id: '5',
@@ -88,25 +90,25 @@ export const materials: Material[] = [
   {
     id: '1',
     title: 'Retorika',
-    description: 'Materi tentang bagaimana mengelola waktu dan prioritas sebagai seorang kader.',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.!',
     date: '2077-03-01',
   },
   {
     id: '2',
-    title: 'Kepemimpinan Efektif',
-    description: 'Teknik memimpin dalam kelompok kecil dan pengambilan keputusan.',
+    title: 'Materi 2',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.!',
     date: '2077-03-01',
   },
   {
     id: '3',
-    title: 'Komunikasi Interpersonal',
-    description: 'Membangun relasi yang baik dan teknik public speaking.',
+    title: 'Materi 3',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.!',
     date: '2077-03-01',
   },
   {
     id: '4',
-    title: 'Etika Organisasi',
-    description: 'Nilai-nilai dasar dan etika dalam berorganisasi.',
+    title: 'Materi 4',
+    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.!',
     date: '2077-03-01',
   },
   {

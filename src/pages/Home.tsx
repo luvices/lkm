@@ -65,21 +65,111 @@ const Word = React.memo(({ word, isGradient }: { word: string, isGradient?: bool
   );
 });
 
-const MovingBlob = ({ color, duration }: { color: string, duration: number }) => (
-  <motion.div
-    animate={{ 
-      x: [0, 400, -200, 0],
-      y: [0, -300, 400, 0],
-      scale: [1, 1.5, 0.8, 1],
-    }}
-    transition={{ 
-      duration, 
-      repeat: Infinity, 
-      ease: "linear" 
-    }}
-    className={`absolute w-[300px] md:w-[600px] h-[300px] md:h-[600px] rounded-full blur-[80px] md:blur-[120px] mix-blend-multiply dark:mix-blend-screen opacity-30 dark:opacity-20 ${color}`}
-  />
-);
+const BinaryBackground = () => {
+  const canvasRef = useRef<HTMLCanvasElement>(null);
+  const mouse = useRef({ x: -1000, y: -1000 });
+
+  useEffect(() => {
+    const canvas = canvasRef.current;
+    if (!canvas) return;
+    const ctx = canvas.getContext('2d');
+    if (!ctx) return;
+
+    let animationFrameId: number;
+    let characters: { x: number, y: number, char: string, opacity: number, targetOpacity: number }[] = [];
+    
+    const fontSize = 18;
+    let columns = 0;
+    let rows = 0;
+
+    const initGrid = () => {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+      columns = Math.ceil(canvas.width / fontSize);
+      rows = Math.ceil(canvas.height / fontSize);
+      
+      characters = [];
+      for (let i = 0; i < columns; i++) {
+        for (let j = 0; j < rows; j++) {
+          characters.push({
+            x: i * fontSize,
+            y: j * fontSize,
+            char: Math.random() > 0.5 ? '0' : '1',
+            opacity: 0,
+            targetOpacity: 0
+          });
+        }
+      }
+    };
+
+    window.addEventListener('resize', initGrid);
+    initGrid();
+
+    const handleMouseMove = (e: MouseEvent) => {
+      mouse.current = { x: e.clientX, y: e.clientY };
+    };
+    window.addEventListener('mousemove', handleMouseMove);
+
+    const isDark = () => document.documentElement.classList.contains('dark');
+
+    const draw = () => {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      ctx.font = `600 ${fontSize * 0.8}px monospace`;
+      ctx.textAlign = 'center';
+      ctx.textBaseline = 'middle';
+      
+      const dark = isDark();
+
+      // Randomly change a few characters to create a dynamic feel
+      for (let i = 0; i < characters.length * 0.03; i++) { 
+        const randomIdx = Math.floor(Math.random() * characters.length);
+        if (characters[randomIdx]) {
+           characters[randomIdx].char = Math.random() > 0.5 ? '0' : '1';
+        }
+      }
+
+      characters.forEach(char => {
+        const dx = mouse.current.x - char.x;
+        const dy = mouse.current.y - char.y;
+        const distance = Math.sqrt(dx * dx + dy * dy);
+        const maxDistance = 250; // Radius
+
+        if (distance < maxDistance) {
+          char.targetOpacity = 1 - (distance / maxDistance);
+        } else {
+          char.targetOpacity = 0;
+        }
+
+        // Smooth opacity transition
+        char.opacity += (char.targetOpacity - char.opacity) * 0.1;
+
+        if (char.opacity > 0.01) {
+          ctx.fillStyle = dark
+            ? `rgba(96, 165, 250, ${char.opacity * 0.8})` // text-blue-400 equivalent
+            : `rgba(37, 99, 235, ${char.opacity * 0.5})`; // text-blue-600 equivalent
+          ctx.fillText(char.char, char.x + fontSize/2, char.y + fontSize/2);
+        }
+      });
+
+      animationFrameId = requestAnimationFrame(draw);
+    };
+
+    draw();
+
+    return () => {
+      window.removeEventListener('resize', initGrid);
+      window.removeEventListener('mousemove', handleMouseMove);
+      cancelAnimationFrame(animationFrameId);
+    };
+  }, []);
+
+  return (
+    <canvas 
+      ref={canvasRef} 
+      className="fixed inset-0 pointer-events-none z-0"
+    />
+  );
+};
 
 const Home: React.FC = () => {
   const constraintsRef = useRef(null);
@@ -101,21 +191,13 @@ const Home: React.FC = () => {
       }
     };
     const interval = setInterval(sync, 16);
+    
     return () => clearInterval(interval);
   }, []);
 
   return (
     <div className="pb-20 min-h-screen overflow-x-hidden relative" ref={constraintsRef}>
-      {/* Dynamic Background */}
-      <div className="absolute inset-0 z-0 pointer-events-none">
-        <MovingBlob color="bg-blue-400/20 dark:bg-blue-900/30" duration={20} />
-        <div className="absolute top-1/2 left-1/4">
-          <MovingBlob color="bg-indigo-400/10 dark:bg-indigo-900/20" duration={25} />
-        </div>
-        <div className="absolute bottom-1/4 right-1/3">
-          <MovingBlob color="bg-blue-300/10 dark:bg-blue-800/20" duration={18} />
-        </div>
-      </div>
+      <BinaryBackground />
 
       <section className="relative pt-8 pb-16 md:pt-12 md:pb-24 px-4 md:px-6 z-10">
         <div className="max-w-[1500px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">

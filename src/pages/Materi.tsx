@@ -35,7 +35,7 @@ const Materi: React.FC = () => {
             transition={{ delay: 0.1 }}
             className="text-slate-600 dark:text-slate-400 mt-2 max-w-xl"
           >
-            Kumpulan materi yang telah dipelajari untuk meningkatkan kapasitas diri dan pemahaman organisasi.
+            Kumpulan materi Latihan Kepemimpinan Mahasiswa Informatika 2026.
           </motion.p>
         </div>
         <div className="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">

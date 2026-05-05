@@ -1,8 +1,8 @@
+import akromImg from '../assets/akrom.jpeg';
 import fikriImg from '../assets/fikri.png';
+import idhoImg from '../assets/idho.jpeg';
 import ranggaImg from '../assets/rangga.png';
 import repatImg from '../assets/repat.jpeg';
-import akromImg from '../assets/akrom.jpeg';
-import idhoImg from '../assets/idho.jpeg';
 import type { Material, Member, Mentor } from '../types';
 
 export const members: Member[] = [
@@ -48,11 +48,11 @@ export const members: Member[] = [
   },
   {
     id: '6',
-    name: 'Muhammad Fikri Biban Putra',
+    name: 'Renata Putri',
     role: 'Anggota',
-    nim: '257006111165',
-    photo: fikriImg,
-    linkedin: '#',
+    nim: '257006111181',
+    photo: repatImg,
+    linkedin: 'https://www.linkedin.com/in/renata-putri-?utm_source=share_via&utm_content=profile&utm_medium=member_android',
   },
   {
     id: '7',

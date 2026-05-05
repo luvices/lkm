@@ -33,10 +33,10 @@ const MateriDetail: React.FC = () => {
         initial={{ opacity: 0, x: -10 }}
         animate={{ opacity: 1, x: 0 }}
         onClick={() => navigate('/materi')}
-        className="flex items-center space-x-2 text-slate-500 hover:text-primary-500 transition-colors mb-8 group"
+        className="flex items-center space-x-2 text-slate-400 hover:text-blue-500 transition-colors mb-8 group uppercase text-[10px] font-black tracking-widest"
       >
-        <ArrowLeft size={20} className="group-hover:-translate-x-1 transition-transform" />
-        <span className="font-medium">Kembali ke Daftar Materi</span>
+        <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
+        <span>Kembali ke Daftar Materi</span>
       </motion.button>
 
       <article>
@@ -46,11 +46,11 @@ const MateriDetail: React.FC = () => {
             animate={{ opacity: 1, y: 0 }}
             className="flex items-center space-x-4 mb-4"
           >
-            <div className="px-3 py-1 bg-primary-100 dark:bg-primary-900/30 text-primary-600 dark:text-primary-400 text-xs font-bold rounded-full uppercase tracking-wider">
+            <div className="px-3 py-1 bg-white/5 text-blue-500 text-[10px] font-bold rounded-[3px] border border-white/10 uppercase tracking-widest">
               Kaderisasi
             </div>
-            <div className="flex items-center text-slate-500 dark:text-slate-400 text-sm">
-              <Calendar size={16} className="mr-2" />
+            <div className="flex items-center text-slate-400 text-[10px] font-bold uppercase tracking-widest">
+              <Calendar size={14} className="mr-2" />
               {material.date ? new Date(material.date).toLocaleDateString('id-ID', { day: 'numeric', month: 'long', year: 'numeric' }) : 'Tanggal tidak tersedia'}
             </div>
           </motion.div>
@@ -59,7 +59,7 @@ const MateriDetail: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl font-extrabold text-slate-900 dark:text-white leading-tight mb-6"
+            className="text-slate-100 mb-6 uppercase font-black tracking-tight leading-[1.1] text-5xl"
           >
             {material.title}
           </motion.h1>
@@ -68,7 +68,7 @@ const MateriDetail: React.FC = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-slate-600 dark:text-slate-400 italic border-l-4 border-primary-500 pl-6 py-2"
+            className="text-lg text-slate-400 border-l-2 border-blue-600 pl-6 py-2 font-medium"
           >
             {material.description}
           </motion.p>
@@ -78,30 +78,30 @@ const MateriDetail: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.3 }}
-          className="glass-card p-8 md:p-12 rounded-3xl"
+          className="glass-card p-8 md:p-12 rounded-[3px]"
         >
-          <div className="prose prose-slate dark:prose-invert max-w-none">
+          <div className="prose prose-invert max-w-none">
             {material.content ? (
               material.content.split('\n\n').map((paragraph, index) => (
-                <p key={index} className="text-lg text-slate-700 dark:text-slate-300 leading-relaxed mb-6">
+                <p key={index} className="text-lg text-[#dde1d2] leading-relaxed mb-6 font-medium">
                   {paragraph}
                 </p>
               ))
             ) : (
-              <div className="flex flex-col items-center py-12 text-slate-400">
+              <div className="flex flex-col items-center py-12 text-[#b4b8a5]">
                 <BookOpen size={48} className="mb-4 opacity-20" />
-                <p>Konten materi sedang dalam proses penyusunan.</p>
+                <p className="uppercase text-[10px] font-black tracking-widest">Konten materi sedang dalam proses penyusunan.</p>
               </div>
             )}
           </div>
           
-          <div className="mt-12 pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-wrap gap-4">
-            <div className="flex items-center space-x-2 text-sm text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/50 px-4 py-2 rounded-lg">
-              <Clock size={16} />
+          <div className="mt-12 pt-8 border-t border-white/10 flex flex-wrap gap-4">
+            <div className="flex items-center space-x-2 text-[10px] font-bold uppercase tracking-widest text-[#b4b8a5] bg-white/5 px-4 py-2 rounded-[3px]">
+              <Clock size={14} />
               <span>Estimasi baca: 5 menit</span>
             </div>
-            <div className="flex items-center space-x-2 text-sm text-slate-500 dark:text-slate-400 bg-slate-100 dark:bg-slate-800/50 px-4 py-2 rounded-lg">
-              <Tag size={16} />
+            <div className="flex items-center space-x-2 text-[10px] font-bold uppercase tracking-widest text-[#b4b8a5] bg-white/5 px-4 py-2 rounded-[3px]">
+              <Tag size={14} />
               <span>Matematika & Seni</span>
             </div>
           </div>
@@ -109,18 +109,18 @@ const MateriDetail: React.FC = () => {
       </article>
 
       <section className="mt-16">
-        <h3 className="text-2xl font-bold text-slate-800 dark:text-slate-100 mb-8">Materi Lainnya</h3>
+        <h2 className="text-slate-100 mb-8 uppercase font-black tracking-tighter">Materi Lainnya</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {materials.filter(m => m.id !== id).slice(0, 2).map((other) => (
             <Link 
               key={other.id} 
               to={`/materi/${other.id}`}
-              className="glass-card p-6 rounded-2xl group hover:border-primary-500/50 transition-all"
+              className="glass-card p-6 rounded-[3px] group hover:border-blue-500/50 transition-all"
             >
-              <h4 className="font-bold text-slate-800 dark:text-slate-100 group-hover:text-primary-500 transition-colors mb-2">
+              <h4 className="font-black uppercase tracking-tight text-slate-100 group-hover:text-blue-500 transition-colors mb-2">
                 {other.title}
               </h4>
-              <p className="text-sm text-slate-500 dark:text-slate-400 line-clamp-2">
+              <p className="text-[11px] text-slate-400 line-clamp-2 font-medium">
                 {other.description}
               </p>
             </Link>

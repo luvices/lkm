@@ -52,16 +52,16 @@ export const members: Member[] = [
     name: 'Renata Putri',
     role: 'Anggota',
     nim: '257006111181',
-    photo: renataImg,
+    photo: "/src/assets/Renata.png",
     linkedin: 'https://www.linkedin.com/in/renata-putri-?utm_source=share_via&utm_content=profile&utm_medium=member_android',
   },
   {
     id: '7',
-    name: 'Muhammad Fikri Biban Putra',
+    name: 'Dafa Zahran',
     role: 'Anggota',
-    nim: '257006111165',
-    photo: fikriImg,
-    linkedin: '#',
+    nim: '257006111188',
+    photo: "/src/assets/Dafa Zahran Formal.jpg",
+    linkedin: 'https://www.linkedin.com/in/dafazahrann/',
   },
   {
     id: '8',
@@ -154,6 +154,7 @@ export const mentors: Mentor[] = [
     role: 'Mentor 1',
     description: 'lorem',
     photo: fikriImg,
+    linkedin: '#',
   },
   {
     id: '2',
@@ -161,5 +162,6 @@ export const mentors: Mentor[] = [
     role: 'Mentor 2',
     description: 'lorem',
     photo: fikriImg,
+    linkedin: '#',
   },
 ];

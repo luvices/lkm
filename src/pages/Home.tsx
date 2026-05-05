@@ -1,180 +1,92 @@
-import React, { useRef, useEffect } from 'react';
-import { motion, useMotionValue, useSpring } from 'framer-motion';
+import React from 'react';
+import { motion } from 'framer-motion';
 import { ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import RollingText from '../components/RollingText';
+import ScrollReveal from '../components/ScrollReveal';
 import fotoGrp from '../assets/foto_grp.jpeg';
 
-// Shared state for photo position - global for performance
-const photoState = {
-  cx: 0,
-  cy: 0,
-  r: 0
-};
-
-const Letter = React.memo(({ char, isGradient }: { char: string, isGradient?: boolean }) => {
-  const ref = useRef<HTMLSpanElement>(null);
-  const x = useMotionValue(0);
-  const y = useMotionValue(0);
-  const rotate = useMotionValue(0);
-  const springX = useSpring(x, { stiffness: 60, damping: 20 });
-  const springY = useSpring(y, { stiffness: 60, damping: 20 });
-  const springRotate = useSpring(rotate, { stiffness: 60, damping: 20 });
-
-  useEffect(() => {
-    let raf: number;
-    const update = () => {
-      if (ref.current && photoState.r > 0) {
-        const rect = ref.current.getBoundingClientRect();
-        const lx = rect.left + rect.width / 2;
-        const ly = rect.top + rect.height / 2;
-        const dx = lx - photoState.cx;
-        const dy = ly - photoState.cy;
-        const dist = Math.sqrt(dx * dx + dy * dy);
-
-        if (dist < photoState.r) {
-          const force = (photoState.r - dist) / photoState.r;
-          x.set(x.get() + dx * force * 6);
-          y.set(y.get() + dy * force * 6);
-          rotate.set(rotate.get() + (Math.random() - 0.5) * 40);
-        }
-      }
-      raf = requestAnimationFrame(update);
-    };
-    raf = requestAnimationFrame(update);
-    return () => cancelAnimationFrame(raf);
-  }, []);
-
-  return (
-    <motion.span
-      ref={ref}
-      style={{ x: springX, y: springY, rotate: springRotate }}
-      className={`inline-block whitespace-pre select-none pointer-events-none px-[0.02em] ${isGradient ? 'text-gradient' : ''}`}
-    >
-      {char}
-    </motion.span>
-  );
-});
-
-const Word = React.memo(({ word, isGradient }: { word: string, isGradient?: boolean }) => {
-  return (
-    <span className="inline-block whitespace-nowrap mr-[0.3em] pointer-events-none">
-      {word.split("").map((char, i) => (
-        <Letter key={i} char={char} isGradient={isGradient} />
-      ))}
-    </span>
-  );
-});
-
-
 const Home: React.FC = () => {
-  const constraintsRef = useRef(null);
-  const photoRef = useRef<HTMLDivElement>(null);
-
-  const lines = [
-    { text: "Latihan Kepemimpinan", gradient: false },
-    { text: "Mahasiswa", gradient: false },
-    { text: "Informatika 2026", gradient: true }
-  ];
-
-  useEffect(() => {
-    const sync = () => {
-      if (photoRef.current) {
-        const rect = photoRef.current.getBoundingClientRect();
-        photoState.cx = rect.left + rect.width / 2;
-        photoState.cy = rect.top + rect.height / 2;
-        photoState.r = rect.width / 2 + 10;
-      }
-    };
-    const interval = setInterval(sync, 16);
-
-    return () => clearInterval(interval);
-  }, []);
-
   return (
-    <div className="pb-20 min-h-screen overflow-x-hidden relative" ref={constraintsRef}>
-
-      <section className="relative pt-8 pb-16 md:pt-12 md:pb-24 px-4 md:px-6 z-10">
-        <div className="max-w-[1500px] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-          <div className="relative z-10 pointer-events-none select-none">
-            <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-[100px] font-black leading-[0.95] mb-8 md:mb-12 tracking-tighter text-slate-900 dark:text-white flex flex-col uppercase">
-              {lines.map((line, idx) => (
-                <div key={idx} className="flex flex-wrap">
-                  {line.text.split(" ").map((word, i) => (
-                    <Word key={i} word={word} isGradient={line.gradient} />
-                  ))}
+    <div className="pb-10 min-h-screen overflow-x-hidden relative">
+      <section className="relative pt-20 pb-20 px-6 z-10">
+        <div className="max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            
+            {/* Text Content - Spans 7 columns on LG */}
+            <div className="lg:col-span-7 flex flex-col items-start z-10">
+              <div className="flex items-center space-x-3 mb-8">
+                <div className="w-5 h-5 bg-blue-600 rounded-sm flex items-center justify-center">
+                  <div className="w-2 h-2 bg-white rounded-full" />
                 </div>
-              ))}
-            </h1>
+                <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-slate-400">
+                  KELOMPOK 19 • LKM 2026
+                </span>
+              </div>
 
-            {/* Buttons — desktop only (shown in left column) */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
-              className="hidden lg:flex flex-wrap gap-6 pointer-events-auto"
-            >
-              <Link to="/anggota" className="w-full sm:w-auto btn-primary text-base md:text-lg px-8 md:px-10 py-4 md:py-5 rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center space-x-3 group">
-                <span>Kenali Kami</span>
-                <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-              <Link to="/materi" className="w-full sm:w-auto btn-secondary text-base md:text-lg px-8 md:px-10 py-4 md:py-5 rounded-[1.5rem] md:rounded-[2rem] text-center">
-                Materi LKM
-              </Link>
-            </motion.div>
-          </div>
+              <h1 className="text-5xl md:text-7xl lg:text-[100px] font-black uppercase leading-[0.85] tracking-[-0.04em] mb-12 text-slate-100 flex flex-col items-start gap-2">
+                <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.1 }}>Latihan</motion.span>
+                <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.2 }}>Kepemimpinan</motion.span>
+                <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.3 }}>Mahasiswa</motion.span>
+                <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.4 }} className="text-blue-600">Informatika</motion.span>
+                <motion.span initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.5 }} className="text-blue-600">2026</motion.span>
+              </h1>
 
-          <div className="relative flex justify-center lg:justify-end lg:translate-x-20">
-            <motion.div
-              ref={photoRef}
-              drag
-              dragConstraints={constraintsRef}
-              dragElastic={0}
-              dragMomentum={false}
-              whileDrag={{ scale: 1.02, zIndex: 100 }}
-              className="relative z-50 cursor-grab active:cursor-grabbing w-full max-w-2xl"
-              style={{ touchAction: 'none' }}
-            >
-              <div className="p-2 md:p-3 bg-blue-500/10 dark:bg-blue-900/20 backdrop-blur-xl rounded-[2rem] md:rounded-[4rem] shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)] md:shadow-[0_50px_100px_-20px_rgba(0,0,0,0.4)] overflow-hidden border-2 border-white/20 dark:border-slate-800/30">
+              <div className="flex flex-wrap gap-6">
+                <Link to="/anggota" className="btn-primary flex items-center space-x-3 group">
+                  <RollingText text="Kenali Kami" />
+                  <ArrowRight size={24} className="group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link to="/materi" className="btn-secondary flex items-center justify-center">
+                  <RollingText text="Materi LKM" />
+                </Link>
+              </div>
+            </div>
+
+            {/* Image Grid - Spans 5 columns on LG */}
+            <div className="lg:col-span-5 relative h-[500px] md:h-[650px] mt-12 lg:mt-0">
+              {/* Main Photo - Floating Layer 1 */}
+              <motion.div
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="absolute top-0 right-0 w-4/5 aspect-[3/4] z-20 rounded-xl overflow-hidden border border-white/10 glass-card p-2"
+              >
                 <img
                   src={fotoGrp}
-                  alt="Kaderisasi Team"
+                  alt="Team Group"
                   draggable={false}
-                  className="rounded-[1.6rem] md:rounded-[3.2rem] w-full object-cover aspect-[4/3] shadow-2xl pointer-events-none"
+                  className="w-full h-full object-cover rounded-lg shadow-2xl"
                 />
-              </div>
-              <motion.div
-                animate={{
-                  scale: [1, 1.1, 1],
-                  rotate: [-5, 5, -5],
-                  boxShadow: [
-                    "0 10px 20px -5px rgba(250, 204, 21, 0.5)",
-                    "0 0 30px 10px rgba(250, 204, 21, 0.7)",
-                    "0 10px 20px -5px rgba(250, 204, 21, 0.5)"
-                  ]
-                }}
-                transition={{ duration: 1.5, repeat: Infinity, ease: "easeInOut" }}
-                className="absolute -top-4 -left-4 md:-top-6 md:-left-6 bg-yellow-400 dark:bg-yellow-500 px-4 md:px-6 py-2 md:py-3 rounded-xl md:rounded-2xl border-2 border-white dark:border-slate-900 pointer-events-none z-[110]"
-              >
-                <p className="text-[10px] md:text-xs font-black uppercase tracking-widest text-slate-900 drop-shadow-sm">Drag Me!</p>
               </motion.div>
-            </motion.div>
-          </div>
 
-          {/* Buttons — mobile only (shown below photo) */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className="flex lg:hidden flex-wrap gap-4 w-full pointer-events-auto"
-          >
-            <Link to="/anggota" className="flex-1 btn-primary text-base px-6 py-4 rounded-[1.5rem] flex items-center justify-center space-x-2 group">
-              <span>Kenali Kami</span>
-              <ArrowRight size={20} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
-            <Link to="/materi" className="flex-1 btn-secondary text-base px-6 py-4 rounded-[1.5rem] text-center flex items-center justify-center">
-              Materi LKM
-            </Link>
-          </motion.div>
+              {/* Decorative Photo - Floating Layer 2 */}
+              <motion.div
+                initial={{ opacity: 0, x: -40 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+                className="absolute bottom-10 left-0 w-3/5 aspect-square z-30 rounded-xl overflow-hidden border border-white/10 glass-card p-2 shadow-2xl"
+              >
+                <img
+                  src={fotoGrp}
+                  alt="Team Detail"
+                  draggable={false}
+                  className="w-full h-full object-cover rounded-lg grayscale hover:grayscale-0 transition-all duration-700"
+                />
+              </motion.div>
+
+              {/* Badge/Sticker Layer */}
+              <motion.div
+                initial={{ scale: 0, rotate: -20 }}
+                animate={{ scale: 1, rotate: 10 }}
+                transition={{ type: "spring", stiffness: 260, damping: 20, delay: 0.5 }}
+                className="absolute top-1/2 -right-6 md:-right-10 z-40 bg-blue-600 px-6 py-4 rounded-xl border-4 border-[#020617] shadow-xl"
+              >
+                <p className="text-white font-black uppercase text-xl italic tracking-tighter">IF'25</p>
+                <p className="text-blue-200 text-[10px] font-bold uppercase tracking-widest">Solidarity First</p>
+              </motion.div>
+            </div>
+          </div>
         </div>
       </section>
     </div>

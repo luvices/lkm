@@ -1,4 +1,5 @@
 import fikriImg from '../assets/fikri.png';
+import ranggaImg from '../assets/rangga.png';
 import repatImg from '../assets/repat.jpeg';
 import akromImg from '../assets/akrom.jpeg';
 import idhoImg from '../assets/idho.jpeg';
@@ -15,11 +16,11 @@ export const members: Member[] = [
   },
   {
     id: '2',
-    name: 'Muhammad Fikri Biban Putra',
+    name: 'Rangga Wijaya',
     role: 'Wakil Ketua',
-    nim: '257006111165',
-    photo: fikriImg,
-    linkedin: '#',
+    nim: '257006111173',
+    photo: ranggaImg,
+    linkedin: 'https://www.linkedin.com/in/rangga-wijaya',
   },
   {
     id: '3',

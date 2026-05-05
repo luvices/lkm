@@ -2,6 +2,7 @@ import akromImg from '../assets/akrom.jpeg';
 import fikriImg from '../assets/fikri.png';
 import idhoImg from '../assets/idho.jpeg';
 import ranggaImg from '../assets/rangga.png';
+import renataImg from '../assets/renata.png';
 import repatImg from '../assets/repat.jpeg';
 import type { Material, Member, Mentor } from '../types';
 
@@ -51,7 +52,7 @@ export const members: Member[] = [
     name: 'Renata Putri',
     role: 'Anggota',
     nim: '257006111181',
-    photo: repatImg,
+    photo: renataImg,
     linkedin: 'https://www.linkedin.com/in/renata-putri-?utm_source=share_via&utm_content=profile&utm_medium=member_android',
   },
   {

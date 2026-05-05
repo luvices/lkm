@@ -30,7 +30,7 @@ const Letter = React.memo(({ char, isGradient }: { char: string, isGradient?: bo
         const dx = lx - photoState.cx;
         const dy = ly - photoState.cy;
         const dist = Math.sqrt(dx * dx + dy * dy);
-        
+
         if (dist < photoState.r) {
           const force = (photoState.r - dist) / photoState.r;
           x.set(x.get() + dx * force * 6);
@@ -77,7 +77,7 @@ const BinaryBackground = () => {
 
     let animationFrameId: number;
     let characters: { x: number, y: number, char: string, opacity: number, targetOpacity: number }[] = [];
-    
+
     const fontSize = 18;
     let columns = 0;
     let rows = 0;
@@ -87,7 +87,7 @@ const BinaryBackground = () => {
       canvas.height = window.innerHeight;
       columns = Math.ceil(canvas.width / fontSize);
       rows = Math.ceil(canvas.height / fontSize);
-      
+
       characters = [];
       for (let i = 0; i < columns; i++) {
         for (let j = 0; j < rows; j++) {
@@ -117,14 +117,14 @@ const BinaryBackground = () => {
       ctx.font = `600 ${fontSize * 0.8}px monospace`;
       ctx.textAlign = 'center';
       ctx.textBaseline = 'middle';
-      
+
       const dark = isDark();
 
       // Randomly change a few characters to create a dynamic feel
-      for (let i = 0; i < characters.length * 0.03; i++) { 
+      for (let i = 0; i < characters.length * 0.03; i++) {
         const randomIdx = Math.floor(Math.random() * characters.length);
         if (characters[randomIdx]) {
-           characters[randomIdx].char = Math.random() > 0.5 ? '0' : '1';
+          characters[randomIdx].char = Math.random() > 0.5 ? 'IF' : '25';
         }
       }
 
@@ -147,7 +147,7 @@ const BinaryBackground = () => {
           ctx.fillStyle = dark
             ? `rgba(96, 165, 250, ${char.opacity * 0.8})` // text-blue-400 equivalent
             : `rgba(37, 99, 235, ${char.opacity * 0.5})`; // text-blue-600 equivalent
-          ctx.fillText(char.char, char.x + fontSize/2, char.y + fontSize/2);
+          ctx.fillText(char.char, char.x + fontSize / 2, char.y + fontSize / 2);
         }
       });
 
@@ -164,8 +164,8 @@ const BinaryBackground = () => {
   }, []);
 
   return (
-    <canvas 
-      ref={canvasRef} 
+    <canvas
+      ref={canvasRef}
       className="fixed inset-0 pointer-events-none z-0"
     />
   );
@@ -174,7 +174,7 @@ const BinaryBackground = () => {
 const Home: React.FC = () => {
   const constraintsRef = useRef(null);
   const photoRef = useRef<HTMLDivElement>(null);
-  
+
   const lines = [
     { text: "Latihan Kepemimpinan", gradient: false },
     { text: "Mahasiswa", gradient: false },
@@ -191,7 +191,7 @@ const Home: React.FC = () => {
       }
     };
     const interval = setInterval(sync, 16);
-    
+
     return () => clearInterval(interval);
   }, []);
 
@@ -213,7 +213,7 @@ const Home: React.FC = () => {
             </h1>
 
             {/* Buttons — desktop only (shown in left column) */}
-            <motion.div 
+            <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.5 }}
@@ -248,8 +248,8 @@ const Home: React.FC = () => {
                   className="rounded-[1.6rem] md:rounded-[3.2rem] w-full object-cover aspect-[4/3] shadow-2xl pointer-events-none"
                 />
               </div>
-              <motion.div 
-                animate={{ 
+              <motion.div
+                animate={{
                   scale: [1, 1.1, 1],
                   rotate: [-5, 5, -5],
                   boxShadow: [

@@ -19,7 +19,7 @@ const Home: React.FC = () => {
                   <div className="w-2 h-2 bg-white rounded-full" />
                 </div>
                 <span className="text-[13px] font-bold uppercase tracking-[0.2em] text-slate-400">
-                  KELOMPOK 19 • LKM 2026
+                  KELOMPOK 19 • LKM IF 2026
                 </span>
               </div>
 

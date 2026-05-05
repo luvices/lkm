@@ -1,4 +1,5 @@
 import akromImg from '../assets/akrom.jpeg';
+import dafaImg from '../assets/dafa.jpg';
 import fikriImg from '../assets/fikri.png';
 import idhoImg from '../assets/idho.jpeg';
 import ranggaImg from '../assets/rangga.png';
@@ -52,7 +53,7 @@ export const members: Member[] = [
     name: 'Renata Putri',
     role: 'Anggota',
     nim: '257006111181',
-    photo: "/src/assets/Renata.png",
+    photo: renataImg,
     linkedin: 'https://www.linkedin.com/in/renata-putri-?utm_source=share_via&utm_content=profile&utm_medium=member_android',
   },
   {
@@ -60,7 +61,7 @@ export const members: Member[] = [
     name: 'Dafa Zahran',
     role: 'Anggota',
     nim: '257006111188',
-    photo: "/src/assets/Dafa Zahran Formal.jpg",
+    photo: dafaImg,
     linkedin: 'https://www.linkedin.com/in/dafazahrann/',
   },
   {

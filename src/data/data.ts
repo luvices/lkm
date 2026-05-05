@@ -1,4 +1,5 @@
 import akromImg from '../assets/akrom.jpeg';
+import anisaImg from '../assets/anisa.jpeg';
 import dafaImg from '../assets/dafa.jpg';
 import fikriImg from '../assets/fikri.png';
 import idhoImg from '../assets/idho.jpeg';
@@ -66,11 +67,11 @@ export const members: Member[] = [
   },
   {
     id: '8',
-    name: 'Muhammad Fikri Biban Putra',
+    name: 'Anisa Rahmawati',
     role: 'Anggota',
-    nim: '257006111165',
-    photo: fikriImg,
-    linkedin: '#',
+    nim: '257006111199',
+    photo: anisaImg,
+    linkedin: ' https://www.linkedin.com/in/anisa-rahmawati-7099b8405?utm_source=share_via&utm_content=profile&utm_medium=member_android',
   },
   {
     id: '9',

@@ -6,6 +6,7 @@ import idhoImg from '../assets/idho.jpeg';
 import ranggaImg from '../assets/rangga.png';
 import renataImg from '../assets/renata.png';
 import repatImg from '../assets/repat.jpeg';
+import revaImg from '../assets/reva.png';
 import type { Material, Member, Mentor } from '../types';
 
 export const members: Member[] = [
@@ -75,11 +76,11 @@ export const members: Member[] = [
   },
   {
     id: '9',
-    name: 'Muhammad Fikri Biban Putra',
+    name: 'Reva Imeilda',
     role: 'Anggota',
-    nim: '257006111165',
-    photo: fikriImg,
-    linkedin: '#',
+    nim: '257006111108',
+    photo: revaImg,
+    linkedin: 'https://id.linkedin.com/in/reva-imeilda-3579063b2',
   },
   {
     id: '10',

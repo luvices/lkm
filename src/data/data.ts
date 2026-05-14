@@ -7,7 +7,8 @@ import ranggaImg from '../assets/rangga.png';
 import renataImg from '../assets/renata.png';
 import repatImg from '../assets/repat.jpeg';
 import revaImg from '../assets/reva.png';
-import type { Material, Member, Mentor } from '../types';
+import rizkiImg from '../assets/rizki.png';
+import type { Material, Member } from '../types';
 
 export const members: Member[] = [
   {
@@ -84,10 +85,10 @@ export const members: Member[] = [
   },
   {
     id: '10',
-    name: 'Muhammad Fikri Biban Putra',
+    name: 'Rizki Muhamad Awaludinsyah',
     role: 'Anggota',
-    nim: '257006111165',
-    photo: fikriImg,
+    nim: '257006111200',
+    photo: rizkiImg,
     linkedin: '#',
   },
 ];
@@ -147,24 +148,5 @@ Dari sisi komputasi, sistem ini dioptimalkan menggunakan teknik concurrency, di 
 Secara keseluruhan, sistem ini menunjukkan bagaimana konsep matematika yang abstrak seperti bilangan kompleks dan iterasi fungsi non-linear dapat diterapkan dalam dunia komputasi untuk menghasilkan karya visual yang estetis. Pola batik yang dihasilkan bukanlah hasil gambar manual, melainkan emergent behavior dari sistem matematis yang sederhana namun sangat kaya secara struktur.
 
 Sebagai kesimpulan, dapat dikatakan bahwa parameter real(c) dan imag(c) berperan dalam menentukan bentuk dasar pola, sedangkan iterasi maksimum menentukan tingkat detail dari pola tersebut. Kombinasi antara matematika, algoritma, dan visualisasi inilah yang menjadikan generator ini tidak hanya sebagai alat teknis, tetapi juga sebagai bentuk eksplorasi seni berbasis sains.`,
-  },
-];
-
-export const mentors: Mentor[] = [
-  {
-    id: '1',
-    name: 'fikri subianto',
-    role: 'Mentor 1',
-    description: 'lorem',
-    photo: fikriImg,
-    linkedin: '#',
-  },
-  {
-    id: '2',
-    name: 'fikri',
-    role: 'Mentor 2',
-    description: 'lorem',
-    photo: fikriImg,
-    linkedin: '#',
   },
 ];

@@ -39,7 +39,7 @@ const Navbar: React.FC = () => {
     { name: 'Home', path: '/' },
     { name: 'Anggota', path: '/anggota' },
     { name: 'Materi', path: '/materi' },
-    { name: 'Mentor', path: '/pembimbing' },
+    { name: 'SWOT', path: '/swot' },
   ];
 
   const showFullLogo = isExpanded || isHovered;

@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import Anggota from './pages/Anggota';
 import Materi from './pages/Materi';
 import MateriDetail from './pages/MateriDetail';
-import Pembimbing from './pages/Pembimbing';
+import Swot from './pages/Swot';
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
           <Route path="anggota" element={<Anggota />} />
           <Route path="materi" element={<Materi />} />
           <Route path="materi/:id" element={<MateriDetail />} />
-          <Route path="pembimbing" element={<Pembimbing />} />
+          <Route path="swot" element={<Swot />} />
         </Route>
       </Routes>
     </Router>

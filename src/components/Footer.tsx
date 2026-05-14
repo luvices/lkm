@@ -6,13 +6,14 @@ import { members } from '../data/data';
 
 import logoHmif from '../assets/logo-hima-if.png';
 import logoIf25Putih from '../assets/logoif25-putih.png';
+import logoLkmIf2 from '../assets/Logo LKM IF2.png';
 
 const Footer: React.FC = () => {
   const pages = [
     { name: 'Home', path: '/' },
     { name: 'Anggota', path: '/anggota' },
     { name: 'Materi', path: '/materi' },
-    { name: 'Mentor', path: '/pembimbing' },
+    { name: 'SWOT', path: '/swot' },
   ];
 
   return (
@@ -111,11 +112,27 @@ const Footer: React.FC = () => {
                 className="h-16 md:h-24 w-auto object-contain"
               />
             </motion.div>
+
             <motion.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
+              className="shine-container p-2 rounded-xl"
+            >
+              <img
+                src={logoLkmIf2}
+                alt="LKM IF2 Logo"
+                draggable={false}
+                className="h-16 md:h-24 w-auto object-contain"
+              />
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              viewport={{ once: true }}
+              transition={{ delay: 0.2 }}
               className="shine-container p-2 rounded-xl"
             >
               <img

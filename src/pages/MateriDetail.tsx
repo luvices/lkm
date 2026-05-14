@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { materials } from '../data/data';
 import { motion } from 'framer-motion';
-import { Calendar, ArrowLeft, BookOpen, Clock, Tag } from 'lucide-react';
+import { Calendar, ArrowLeft, BookOpen } from 'lucide-react';
 
 const MateriDetail: React.FC = () => {
   const { id } = useParams<{ id: string }>();
@@ -95,16 +95,7 @@ const MateriDetail: React.FC = () => {
             )}
           </div>
 
-          <div className="mt-12 pt-8 border-t border-white/10 flex flex-wrap gap-4">
-            <div className="flex items-center space-x-2 text-[10px] font-bold uppercase tracking-widest text-[#b4b8a5] bg-white/5 px-4 py-2 rounded-[3px]">
-              <Clock size={14} />
-              <span>Estimasi baca: 5 menit</span>
-            </div>
-            <div className="flex items-center space-x-2 text-[10px] font-bold uppercase tracking-widest text-[#b4b8a5] bg-white/5 px-4 py-2 rounded-[3px]">
-              <Tag size={14} />
-              <span>LKM Informatika</span>
-            </div>
-          </div>
+
         </motion.div>
       </article>
 

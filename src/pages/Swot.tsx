@@ -86,7 +86,7 @@ const Swot: React.FC = () => {
           >
             {/* Background Icon Watermark */}
             <div className="absolute -right-8 -bottom-8 opacity-[0.03] group-hover:opacity-[0.06] transition-opacity duration-500 group-hover:scale-125 transform">
-              {React.cloneElement(section.icon as React.ReactElement, { size: 200 })}
+              {React.cloneElement(section.icon as any, { size: 200 })}
             </div>
 
             <div className="flex items-center space-x-4 mb-8">

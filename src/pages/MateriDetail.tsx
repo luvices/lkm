@@ -17,7 +17,7 @@ const MateriDetail: React.FC = () => {
     return (
       <div className="min-h-[60vh] flex flex-col items-center justify-center px-6">
         <h2 className="text-2xl font-bold text-slate-800 dark:text-slate-100">Materi tidak ditemukan</h2>
-        <button 
+        <button
           onClick={() => navigate('/materi')}
           className="mt-4 px-6 py-2 bg-primary-500 text-white rounded-xl font-semibold hover:bg-primary-600 transition-colors"
         >
@@ -94,7 +94,7 @@ const MateriDetail: React.FC = () => {
               </div>
             )}
           </div>
-          
+
           <div className="mt-12 pt-8 border-t border-white/10 flex flex-wrap gap-4">
             <div className="flex items-center space-x-2 text-[10px] font-bold uppercase tracking-widest text-[#b4b8a5] bg-white/5 px-4 py-2 rounded-[3px]">
               <Clock size={14} />
@@ -102,7 +102,7 @@ const MateriDetail: React.FC = () => {
             </div>
             <div className="flex items-center space-x-2 text-[10px] font-bold uppercase tracking-widest text-[#b4b8a5] bg-white/5 px-4 py-2 rounded-[3px]">
               <Tag size={14} />
-              <span>Matematika & Seni</span>
+              <span>LKM Informatika</span>
             </div>
           </div>
         </motion.div>
@@ -112,8 +112,8 @@ const MateriDetail: React.FC = () => {
         <h2 className="text-slate-100 mb-8 uppercase font-black tracking-tighter">Materi Lainnya</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {materials.filter(m => m.id !== id).slice(0, 2).map((other) => (
-            <Link 
-              key={other.id} 
+            <Link
+              key={other.id}
               to={`/materi/${other.id}`}
               className="glass-card p-6 rounded-[3px] group hover:border-blue-500/50 transition-all"
             >

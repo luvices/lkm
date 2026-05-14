@@ -96,57 +96,158 @@ export const members: Member[] = [
 export const materials: Material[] = [
   {
     id: '1',
-    title: 'Retorika',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.!',
-    date: '2077-03-01',
+    title: 'Analisis & Pengembangan Masyarakat (APM)',
+    description: 'Pemateri: A Ace',
+    date: '2026-04-25',
+    content: `Analisis dan Pengembangan Masyarakat (APM) merupakan sebuah metodologi strategis yang digunakan untuk menciptakan perubahan sosial yang positif dan terukur.
+
+1. Filosofi dan Pengertian Dasar
+a. Analisis Masyarakat: Merupakan proses diagnostik untuk membedah secara mendalam struktur sosial, mengidentifikasi masalah inti, serta memetakan kebutuhan nyata yang ada di lapangan.
+b. Pengembangan Masyarakat: Adalah aksi nyata berupa proses-proses terencana yang bertujuan untuk meningkatkan kualitas hidup masyarakat melalui pelibatan aktif warga sebagai subjek pembangunan.
+
+2. Tinjauan Perspektif Organisasi
+Dalam menjalankan APM, organisasi harus mengikuti siklus manajemen yang disiplin agar program tepat sasaran:
+a. Perumusan: Tahap awal merancang strategi dan program berdasarkan data mentah hasil analisis.
+b. Implementasi: Pelaksanaan program di lapangan dengan mengedepankan kolaborasi.
+c. Evaluasi: Menilai sejauh mana program berdampak dan apa saja yang perlu diperbaiki untuk masa depan.
+
+3. Tujuan Strategis Pemberdayaan
+Tujuan akhir dari APM bukan sekadar memberi bantuan, melainkan membangun ekosistem yang tangguh:
+a. Kemandirian (Self-Reliance): Mendorong masyarakat agar mampu berdiri di atas kaki sendiri dan tidak bergantung pada pihak luar.
+b. Peningkatan Kesejahteraan: Membuka jalan bagi akses yang lebih baik terhadap sektor ekonomi, kesehatan, dan pendidikan.
+c. Optimasi Potensi Lokal: Mengidentifikasi dan mengelola kekayaan Sumber Daya Manusia (SDM) serta Sumber Daya Alam (SDA) secara maksimal.
+d. Keadilan Sosial: Berupaya mengurangi kesenjangan sosial agar manfaat pembangunan dapat dirasakan secara merata.`
   },
   {
     id: '2',
-    title: 'Materi 2',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.!',
-    date: '2077-03-01',
+    title: 'Dinamika Sosial dan Politik',
+    description: 'Pemateri: A Arul',
+    date: '2026-04-25',
+    content: `Dinamika sosial dan politik adalah studi tentang perubahan, pergeseran kekuatan, dan interaksi antar kelompok dalam masyarakat yang dipengaruhi oleh kebijakan, kekuasaan, dan ideologi. Bagi mahasiswa, memahami dinamika ini adalah kunci untuk memetakan posisi strategis dalam melakukan kontrol sosial.
+
+1. Spektrum Ideologi Politik
+Dinamika politik global maupun nasional sering kali bergerak di antara kutub-kutub ideologi yang lahir sejak era Reformasi Prancis:
+a. Ideologi Kiri (Sosialis/Komunis): Menitikberatkan pada konsep kesetaraan (equal) dan peran negara yang kuat dalam menjamin kesejahteraan serta keadilan sosial bagi seluruh rakyat.
+b. Ideologi Kanan (Kapitalis/Liberal): Lebih condong pada kebebasan individu, kompetisi pasar bebas, dan kepatuhan pada aturan yang ada yang kemudian melahirkan kapitalisme.
+c. Posisi Moderat: Berusaha mengambil jalan tengah dengan pandangan yang lebih luas dan seimbang, tidak terjebak pada ekstremitas satu pihak saja.
+
+2. Tipologi Sikap Mahasiswa yang Ideal
+Di tengah tarik-ulur kepentingan politik, mahasiswa harus memiliki integritas berpikir yang kokoh:
+a. Menghindari Fanatisme Buta: Mahasiswa tidak boleh membela sesuatu secara berlebihan tanpa dasar data yang kuat, karena hal ini akan mematikan kemampuan analisis objektif.
+b. Berpikir Objektif: Mampu melihat sebuah fenomena atau kebijakan dari dua sisi (pro dan kontra) secara adil.
+c. Berpikir Luas (Moderat): Memiliki pemikiran yang jauh ke depan dan tidak mudah terprovokasi oleh isu jangka pendek.
+d. Kritis dan Teliti: Selalu memikirkan matang-matang setiap tindakan dan informasi sebelum mengambil sikap atau keputusan.`
   },
   {
     id: '3',
-    title: 'Materi 3',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.!',
-    date: '2077-03-01',
+    title: 'Manajemen Aksi',
+    description: 'Pemateri: A Defri',
+    date: '2026-04-25',
+    content: `Manajemen aksi adalah sebuah instrumen atau model penyampaian aspirasi, pendapat, dan tuntutan yang dilakukan oleh massa yang terorganisir. Gerakan ini biasanya muncul sebagai respon ketika jalur dialog formal mengalami kebuntuan atau saat lembaga legislatif dianggap tidak lagi mampu mewakili aspirasi rakyat secara efektif.
+
+1. Tujuan Strategis dan Landasan Hukum
+Setiap aksi yang dilakukan oleh mahasiswa harus memiliki tujuan yang jelas dan pijakan hukum yang kuat:
+a. Tujuan Utama: Memberikan tekanan kepada pembuat keputusan (pemerintah atau lembaga terkait) agar meninjau ulang, mengubah, atau mengeluarkan kebijakan yang lebih berpihak pada kepentingan publik.
+b. Landasan Hukum: Kemerdekaan menyampaikan pendapat di muka umum dijamin oleh konstitusi dan secara spesifik diatur dalam UU No. 9 Tahun 1998.
+
+2. Struktur Perangkat Aksi
+Agar aksi berjalan kondusif dan mencapai target, diperlukan pembagian peran yang sistematis:
+a. Korlap (Koordinator Lapangan): Pemegang komando tertinggi yang mengatur ritme dan pergerakan massa.
+b. Orator: Penyambung lidah yang menyampaikan poin-poin tuntutan secara lugas kepada publik.
+c. Negosiator: Tim diplomasi yang bertugas melakukan lobi langsung dengan pihak sasaran atau aparat keamanan.
+d. Agitator: Bertugas menjaga semangat dan emosi massa agar tetap solid selama aksi berlangsung.`
   },
   {
     id: '4',
-    title: 'Materi 4',
-    description: 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Quisquam, quod.!',
-    date: '2077-03-01',
+    title: 'Otoritas Informasi',
+    description: 'Pemateri: A Akmal Riza',
+    date: '2026-05-02',
+    content: `Pada era reformasi dan keterbukaan informasi saat ini, filosofi kekuasaan telah bergeser. Data telah bertransformasi menjadi "senjata" utama karena kemampuannya dalam menyimpan, mengolah, dan menyebarkan informasi apa pun untuk memengaruhi opini publik maupun kebijakan.
+
+1. Tiga Pilar Utama Otoritas Informasi
+Untuk membangun otoritas yang kredibel, terdapat tiga pilar yang harus ditegakkan:
+a. Struktur: Membangun hierarki informasi yang jelas agar alur data terorganisir.
+b. Validasi: Proses krusial untuk memastikan apakah suatu informasi benar, akurat, dan dapat dipertanggungjawabkan.
+c. Hak Akses: Prinsip bahwa tidak semua informasi bisa diberikan kepada semua orang; harus ada batasan berdasarkan wewenang dan urgensi.
+
+2. Peran Mahasiswa Informatika: Arsitek Hukum Digital
+Informatika bukan sekadar teknis koding, melainkan arsitek dari Digital Sovereignty (Kedaulatan Digital). Sebagai mahasiswa Informatika, kamu memegang peran strategis:
+a. Pengelola Web: Menentukan siapa saja yang berhak mengakses informasi melalui sistem yang dibangun.
+b. Otoritas Tertinggi: Menjadi pihak yang memegang dan menyaring informasi sebelum disampaikan kepada anggota organisasi atau publik.
+c. Krisis Sistemik: Kegagalan dalam menjaga data (seperti kasus kebocoran data jutaan mahasiswa) adalah bukti nyata kegagalan dalam menjalankan fungsi otoritas informasi.`
   },
   {
     id: '5',
-    title: 'Batik Fractal Generator',
-    description: 'Eksplorasi matematika, algoritma, dan seni dalam pembuatan motif batik fraktal.',
-    date: '2077-03-01',
-    content: `Dalam pengembangan web Batik Fractal Generator ini, konsep utama yang digunakan berasal dari cabang matematika yang menggabungkan bilangan kompleks, iterasi fungsi non-linear, dan teori fraktal. Sistem ini tidak sekadar menggambar pola, melainkan menghasilkan pola secara matematis melalui proses komputasi.
+    title: 'Retorika Seni Berbicara dan Persuasi',
+    description: 'Pemateri: A Gilang',
+    date: '2026-05-02',
+    content: `Retorika secara etimologi adalah seni berbicara dan menulis secara efektif serta persuasif. Retorika bukan sekadar rangkaian kata-kata, melainkan sebuah strategi komunikasi yang bertujuan untuk memengaruhi audiens melalui penggunaan bahasa yang tepat dan terencana.
 
-Fraktal sendiri dapat didefinisikan sebagai suatu objek matematika yang terbentuk dari proses pengulangan (iterasi) suatu aturan sederhana, namun menghasilkan bentuk yang sangat kompleks dan detail. Salah satu sifat utama fraktal adalah self-similarity, yaitu bagian kecil dari pola memiliki kemiripan dengan keseluruhan bentuknya. Dalam implementasi ini, jenis fraktal yang digunakan adalah Julia Set, yang merupakan hasil dari iterasi fungsi pada bilangan kompleks.
+1. Tiga Pilar Dasar Retorika (Segitiga Aristoteles)
+Agar sebuah pembicaraan memiliki daya pengaruh yang kuat, diperlukan kombinasi tiga prinsip utama:
+a. Etos (Kredibilitas): Menitikberatkan pada kualitas dan karakter pembicara. Audiens akan lebih percaya jika pembicara memiliki integritas dan keahlian di bidangnya.
+b. Patos (Emosi): Cara menyampaikan informasi dengan menyentuh perasaan audiens, seperti membangkitkan rasa simpati, amarah terhadap ketidakadilan, rasa bangga, hingga semangat perjuangan.
+c. Logos (Logika): Sebuah argumen akan jauh lebih meyakinkan jika masuk akal, memiliki struktur yang kuat, dan berbasis pada data atau fakta yang valid.
 
-Untuk memahami bagaimana pola tersebut terbentuk, kita harus memahami terlebih dahulu konsep bilangan kompleks. Bilangan kompleks adalah bilangan yang memiliki dua komponen, yaitu bagian real dan bagian imajiner, yang secara umum dituliskan sebagai z=x+yi. Dalam konteks sistem ini, setiap titik pada layar (pixel) tidak diperlakukan hanya sebagai koordinat biasa, melainkan diubah menjadi bilangan kompleks. Artinya, layar komputer sebenarnya berfungsi sebagai representasi dari bidang kompleks, di mana sumbu horizontal merepresentasikan bagian real, dan sumbu vertikal merepresentasikan bagian imajiner.
+2. Teknik dan Struktur Berbicara yang Efektif
+Berbicara di depan publik membutuhkan teknik khusus agar pesan tersampaikan dengan hidup:
+a. Storytelling: Menghubungkan audiens melalui faktor emosional melalui narasi atau cerita.
+b. Etika dan Olah Vokal: Memperhatikan bahasa tubuh serta intonasi suara agar argumen yang disampaikan terasa lebih "hidup".
+c. Struktur yang Jelas: Penyampaian harus mengalir secara sistematis, dimulai dari Pembuka yang menarik, Isi yang berbobot, hingga Penutup yang kuat.`
+  },
+  {
+    id: '6',
+    title: 'Analisa Organisasi',
+    description: 'Pemateri: A Fauzan',
+    date: '2026-05-03',
+    content: `Analisa organisasi adalah sebuah proses sistematis untuk memahami kondisi internal dan eksternal suatu organisasi secara mendalam. Tujuannya adalah untuk menemukan akar masalah, memetakan potensi yang belum tergarap, serta menentukan arah perbaikan yang paling efektif.
 
-Setelah setiap pixel dipetakan menjadi bilangan kompleks, nilai tersebut digunakan sebagai nilai awal z dalam proses iterasi. Variabel z ini sangat penting karena merepresentasikan titik yang sedang diuji perilakunya. Nilai z tidak tetap, melainkan berubah pada setiap iterasi berdasarkan suatu fungsi matematika. Fungsi yang digunakan dalam sistem ini adalah fungsi non-linear, yaitu:
+1. Tujuan Strategis Analisa
+Melakukan analisa bukan sekadar rutinitas, melainkan kebutuhan strategis untuk:
+a. Mengetahui Kondisi Nyata: Mendapatkan gambaran objektif tentang kesehatan organisasi saat ini.
+b. Identifikasi Akar Masalah: Memastikan perbaikan dilakukan pada sumber masalah, bukan sekadar gejalanya.
+c. Mendukung Keputusan Tepat: Mengambil keputusan berdasarkan fakta dan data yang tersedia.
+d. Dasar Perbaikan Strategi: Menjadi fondasi dalam menyusun ulang rencana kerja agar lebih relevan dengan tantangan zaman.
 
-zₙ₊₁ = zₙ² + c
+2. Ruang Lingkup Analisa
+Analisa yang komprehensif harus menyentuh dua dimensi utama:
+a. Dimensi Internal: Meliputi kualitas Sumber Daya Manusia (SDM), efektivitas struktur organisasi, budaya kerja, serta pola komunikasi antar anggota.
+b. Dimensi Eksternal: Memetakan peluang, tantangan, aturan hukum, kebutuhan lingkungan, serta hubungan antar lembaga.`
+  },
+  {
+    id: '7',
+    title: 'Pembangunan & Pengembangan Organisasi',
+    description: 'Pemateri: A Wildan',
+    date: '2026-05-03',
+    content: `Pembangunan dan pengembangan organisasi adalah sebuah proses terencana dan berkelanjutan yang bertujuan untuk meningkatkan efektivitas organisasi secara menyeluruh. Fokus utamanya terletak pada perbaikan sistem, optimalisasi struktur, penguatan budaya kerja, dan peningkatan kualitas Sumber Daya Manusia (SDM).
 
-Di mana c adalah suatu konstanta kompleks yang nilainya tetap selama proses berlangsung. Konstanta c inilah yang menjadi parameter utama yang menentukan bentuk dari pola fraktal yang dihasilkan. Nilai c sendiri terdiri dari dua bagian, yaitu real(c) dan imag(c). Bagian real dari c mengontrol komponen horizontal dari dinamika sistem, sedangkan bagian imajiner mengontrol komponen vertikal. Kombinasi keduanya menghasilkan variasi pola yang sangat beragam. Bahkan perubahan kecil pada nilai real(c) atau imag(c) dapat menyebabkan perubahan besar pada bentuk pola yang dihasilkan, karena sistem ini bersifat sangat sensitif terhadap parameter.
+1. Tujuan Strategis Pengembangan
+Upaya pengembangan ini diarahkan untuk mencapai beberapa target utama:
+a. Meningkatkan Produktivitas: Menciptakan efisiensi kerja yang lebih tinggi dalam setiap lini organisasi.
+b. Adaptabilitas: Menyesuaikan organisasi dengan perubahan lingkungan eksternal yang dinamis.
+c. Kualitas SDM: Meningkatkan kompetensi anggota serta kapasitas kepemimpinan (leadership) di semua tingkatan.
+d. Budaya Positif: Menciptakan lingkungan dan budaya kerja yang sehat, suportif, dan produktif.
 
-Proses iterasi dilakukan secara berulang untuk setiap titik. Pada setiap langkah, nilai z diperbarui menggunakan hasil sebelumnya. Selama proses ini berlangsung, sistem akan terus memantau apakah nilai z tetap stabil atau justru semakin besar dan menjauh dari titik asal. Untuk menentukan hal ini, digunakan konsep magnitudo atau panjang dari bilangan kompleks, yang dihitung menggunakan rumus |z| = √(x² + y²). Jika nilai magnitudo ini melebihi batas tertentu (biasanya 2), maka titik tersebut dianggap “divergen” atau keluar dari sistem.
+2. Ciri-Ciri Perkembangan Organisasi
+Sebuah proses pengembangan dapat dikatakan berhasil jika memiliki karakteristik sebagai berikut:
+a. Berorientasi pada Perubahan Terencana: Perubahan dilakukan secara sengaja dan memiliki arah yang jelas.
+b. Melibatkan Seluruh Anggota: Tidak hanya bersifat top-down, tetapi merangkul seluruh elemen organisasi.
+c. Kolaboratif & Partisipatif: Mengedepankan kerja sama dan keterlibatan aktif dari setiap anggota.`
+  },
+  {
+    id: '8',
+    title: 'Esensi Kekeluargaan',
+    description: 'Pemateri: Teh Anisa Esha Utami',
+    date: '2026-05-03',
+    content: `Kekeluargaan dalam konteks organisasi bukan sekadar ikatan formal, melainkan kondisi di mana beberapa orang memiliki perasaan emosional yang kuat, rasa kebersamaan, dan kesamaan pola pikir. Kekeluargaan adalah fondasi yang membuat sebuah perkumpulan tidak hanya terasa seperti tempat bekerja, tetapi sebagai "rumah" bagi para anggotanya.
 
-Namun, karena secara teoritis iterasi bisa berlangsung tanpa batas, maka dalam implementasi digunakan batas yang disebut iterasi maksimum (maxIter). Parameter ini menentukan berapa kali proses iterasi dilakukan sebelum sistem berhenti. Jika suatu titik tidak melewati batas hingga iterasi maksimum tercapai, maka titik tersebut dianggap sebagai bagian dari struktur utama fraktal. Sebaliknya, jika titik tersebut lebih cepat keluar (melebihi batas), maka jumlah iterasi yang dibutuhkan untuk keluar akan dicatat.
+1. Makna Luas Kekeluargaan
+Penting untuk dipahami bahwa kekeluargaan memiliki makna yang sangat luas:
+a. Bukan Sekadar Nama: Kekeluargaan bukan hanya label yang ditempelkan pada sebuah kelompok.
+b. Kepedulian (Care): Makna kekeluargaan yang paling mendasar adalah kesediaan untuk memantau dan mengatur kondisi satu sama lain.
+c. Ikatan Emosional: Orang yang aktif dalam organisasi cenderung lebih terikat secara emosional karena intensitas pertemuan yang tinggi.
 
-Nilai jumlah iterasi inilah yang kemudian digunakan dalam proses pewarnaan (color mapping). Setiap titik diberi warna berdasarkan seberapa cepat atau lambat ia keluar dari sistem. Titik yang cepat keluar biasanya diberi warna terang, sedangkan titik yang bertahan lama atau tidak keluar sama sekali akan diberi warna gelap. Proses ini menghasilkan gradasi warna yang kompleks dan indah, yang secara visual menyerupai motif batik.
-
-Untuk meningkatkan kualitas visual, sistem juga menerapkan teknik anti-aliasing, yaitu dengan mengambil beberapa sampel dalam satu pixel dan merata-ratakannya. Hal ini bertujuan untuk mengurangi efek pecah atau kasar pada gambar. Selain itu, dilakukan pula transformasi geometris seperti refleksi (mirror) dan rotasi, yang bertujuan untuk menambah simetri dan estetika pada pola sehingga lebih menyerupai motif batik tradisional.
-
-Dari sisi komputasi, sistem ini dioptimalkan menggunakan teknik concurrency, di mana proses perhitungan untuk setiap baris gambar dijalankan secara paralel menggunakan goroutine. Hal ini memungkinkan proses rendering yang lebih cepat, terutama ketika menghasilkan gambar dengan resolusi tinggi atau iterasi yang besar.
-
-Secara keseluruhan, sistem ini menunjukkan bagaimana konsep matematika yang abstrak seperti bilangan kompleks dan iterasi fungsi non-linear dapat diterapkan dalam dunia komputasi untuk menghasilkan karya visual yang estetis. Pola batik yang dihasilkan bukanlah hasil gambar manual, melainkan emergent behavior dari sistem matematis yang sederhana namun sangat kaya secara struktur.
-
-Sebagai kesimpulan, dapat dikatakan bahwa parameter real(c) dan imag(c) berperan dalam menentukan bentuk dasar pola, sedangkan iterasi maksimum menentukan tingkat detail dari pola tersebut. Kombinasi antara matematika, algoritma, dan visualisasi inilah yang menjadikan generator ini tidak hanya sebagai alat teknis, tetapi juga sebagai bentuk eksplorasi seni berbasis sains.`,
+2. Kekuatan Beban yang Sama (Shared Experience)
+Salah satu alasan mengapa rasa kekeluargaan begitu kuat di organisasi adalah karena adanya kesamaan beban. Ketika anggota berbagi cerita dan menghadapi tantangan yang sama, tercipta rasa senasib sepenanggungan. Proses saling berbagi cerita ini memberikan efek relaksasi dan memperkuat solidaritas.`
   },
 ];

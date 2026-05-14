@@ -34,8 +34,8 @@ const MaterialCard: React.FC<MaterialCardProps> = ({ material }) => {
           {material.description}
         </p>
       </div>
-      
-      <button 
+
+      <button
         onClick={() => navigate(`/materi/${material.id}`)}
         className="flex items-center space-x-2 text-blue-500 font-black uppercase text-[10px] tracking-widest group/btn border border-blue-500/20 px-4 py-2 rounded-[3px] hover:bg-blue-600 hover:text-white transition-all"
       >

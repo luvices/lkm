@@ -87,15 +87,15 @@ const Navbar: React.FC = () => {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden md:flex items-center space-x-1">
+          <div className="hidden md:flex items-center space-x-3">
             {navItems.map((item) => (
               <RollingText
                 key={item.path}
                 to={item.path}
                 text={item.name}
-                className={`px-5 py-2.5 rounded-full text-[13px] uppercase font-black tracking-widest transition-all duration-300 active:scale-95 ${location.pathname === item.path
-                    ? 'bg-blue-600 text-white'
-                    : 'text-slate-400 hover:bg-white/5 hover:text-slate-100'
+                className={`flex items-center justify-center px-6 py-2.5 rounded-full text-[13px] uppercase font-semibold tracking-[0.1em] transition-all duration-300 active:scale-95 ${location.pathname === item.path
+                    ? 'bg-blue-600/10 text-blue-400 border border-blue-500/20'
+                    : 'text-slate-400 hover:text-slate-100'
                   }`}
               />
             ))}
@@ -126,8 +126,8 @@ const Navbar: React.FC = () => {
                   key={item.path}
                   to={item.path}
                   onClick={() => setIsOpen(false)}
-                  className={`px-6 py-4 rounded-2xl font-black uppercase tracking-widest text-[11px] transition-all ${location.pathname === item.path
-                      ? 'bg-blue-600 text-white'
+                  className={`px-6 py-4 rounded-2xl font-semibold uppercase tracking-[0.1em] text-[12px] transition-all ${location.pathname === item.path
+                      ? 'bg-blue-600/10 text-blue-400 border border-blue-500/20'
                       : 'text-slate-400 hover:bg-white/5 hover:text-slate-100'
                     }`}
                 >

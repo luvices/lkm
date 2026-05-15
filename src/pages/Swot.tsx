@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { TrendingUp, AlertTriangle, Zap, Shield, X, Lightbulb } from 'lucide-react';
 
@@ -20,6 +20,17 @@ interface SwotSection {
 
 const Swot: React.FC = () => {
   const [selectedSection, setSelectedSection] = useState<SwotSection | null>(null);
+
+  useEffect(() => {
+    if (selectedSection) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [selectedSection]);
 
   const swotData: SwotSection[] = [
     {
@@ -132,7 +143,7 @@ const Swot: React.FC = () => {
           transition={{ delay: 0.1 }}
           className="text-slate-400 mt-4 max-w-2xl mx-auto font-bold uppercase text-[11px] tracking-[0.2em]"
         >
-          Analisis Strategis Angkatan Informatika 2024 (LKM 2026).
+          Analisis Strategis Angkatan Informatika 2025 (LKM 2026).
         </motion.p>
       </div>
 
@@ -161,7 +172,7 @@ const Swot: React.FC = () => {
                   {section.title}
                 </h2>
               </div>
-              <motion.div 
+              <motion.div
                 whileHover={{ scale: 1.1 }}
                 className="text-white/20 group-hover:text-white/40 text-[10px] font-bold uppercase tracking-[0.2em]"
               >
@@ -200,7 +211,7 @@ const Swot: React.FC = () => {
               onClick={() => setSelectedSection(null)}
               className="absolute inset-0 bg-slate-950/80 backdrop-blur-md"
             />
-            
+
             <motion.div
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -271,4 +282,3 @@ const Swot: React.FC = () => {
 };
 
 export default Swot;
-

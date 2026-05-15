@@ -29,18 +29,36 @@ const Footer: React.FC = () => {
 
       {/* Marquee Section */}
       <div className="relative z-10 w-full mb-12 overflow-hidden py-6 border-y border-white/5 bg-white/[0.02]">
-        <motion.div
-          animate={{ x: [0, -1000] }}
-          transition={{ duration: 15, repeat: Infinity, ease: "linear" }}
-          className="flex whitespace-nowrap gap-8 items-center"
-        >
-          {[...Array(10)].map((_, i) => (
-            <div key={i} className="flex gap-8 items-center">
-              <span className="text-3xl font-black uppercase tracking-tighter text-blue-600">KELOMPOK 19 - LKM INFORMATIKA 2026</span>
-              <span className="text-3xl text-white/10">•</span>
+        <div className="flex overflow-hidden">
+          <motion.div
+            animate={{ x: ["0%", "-50%"] }}
+            transition={{ duration: 60, repeat: Infinity, ease: "linear" }}
+            className="flex whitespace-nowrap items-center will-change-transform"
+          >
+            {/* First Set */}
+            <div className="flex items-center">
+              {[...Array(10)].map((_, i) => (
+                <div key={`set1-${i}`} className="flex items-center">
+                  <span className="text-3xl font-black uppercase tracking-tighter text-blue-600">
+                    KELOMPOK 19 - LKM INFORMATIKA 2026
+                  </span>
+                  <span className="text-3xl text-white/10 mx-12">•</span>
+                </div>
+              ))}
             </div>
-          ))}
-        </motion.div>
+            {/* Second Identical Set for Seamless Loop */}
+            <div className="flex items-center">
+              {[...Array(10)].map((_, i) => (
+                <div key={`set2-${i}`} className="flex items-center">
+                  <span className="text-3xl font-black uppercase tracking-tighter text-blue-600">
+                    KELOMPOK 19 - LKM INFORMATIKA 2026
+                  </span>
+                  <span className="text-3xl text-white/10 mx-12">•</span>
+                </div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
       </div>
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">

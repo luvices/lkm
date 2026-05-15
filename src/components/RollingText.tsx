@@ -60,11 +60,9 @@ const RollingText: React.FC<RollingTextProps> = ({ text = '', className = '', to
 
   if (to) {
     return (
-      <motion.div initial="initial" whileHover="hovered">
-        <Link to={to} className={containerClasses}>
-          {content}
-        </Link>
-      </motion.div>
+      <Link to={to} className={containerClasses}>
+        {content}
+      </Link>
     );
   }
 

@@ -21,6 +21,16 @@
     --border: #33415580;
   }
 
+  * {
+    -webkit-tap-highlight-color: transparent;
+    outline: none !important;
+  }
+
+  :focus {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+
   html {
     @apply scroll-smooth;
     font-size: 16px;
